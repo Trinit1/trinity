@@ -1,0 +1,81 @@
+<div class="container my-5">
+  <h2 class="text-center mb-4 text-primary">🔔 Historial de notificaciones</h2>
+
+  <div class="row g-3 mb-4 align-items-end">
+    <div class="col-md-3">
+      <select class="form-select" [(ngModel)]="filtroTipo">
+        <option value="">Todos los tipos</option>
+        <option value="info">Info</option>
+        <option value="success">Éxito</option>
+        <option value="warning">Advertencia</option>
+        <option value="error">Error</option>
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label text-white">Desde</label>
+      <input type="date" class="form-control" [(ngModel)]="filtroDesde">
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label text-white">Hasta</label>
+      <input type="date" class="form-control" [(ngModel)]="filtroHasta">
+    </div>
+
+    <div class="col-md-3 text-end">
+      <button class="btn btn-outline-light" (click)="resetFiltros()">Reiniciar filtros</button>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <div class="text-white">
+      <strong>Ordenar por:</strong>
+    </div>
+
+    <div class="btn-group">
+      <button class="btn btn-outline-light btn-sm" (click)="ordenFecha = ordenFecha === 'asc' ? 'desc' : 'asc'">
+        Fecha {{ ordenFecha === 'asc' ? '↑' : '↓' }}
+      </button>
+      <button class="btn btn-outline-light btn-sm" (click)="ordenTipo = ordenTipo === 'asc' ? 'desc' : 'asc'">
+        Tipo {{ ordenTipo === 'asc' ? 'A-Z' : 'Z-A' }}
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="notificacionesFiltradas.length > 0; else sinNotificaciones">
+    <div
+      *ngFor="let noti of notificacionesPaginadas"
+      class="alert d-flex justify-content-between align-items-start shadow-sm border rounded-3 p-3 mb-3"
+      [ngClass]="{
+        'alert-info': noti.tipo === 'info',
+        'alert-success': noti.tipo === 'success',
+        'alert-warning': noti.tipo === 'warning',
+        'alert-danger': noti.tipo === 'error'
+      }"
+    >
+      <div class="flex-grow-1">
+        <p class="mb-1">{{ noti.mensaje }}</p>
+        <small class="text-muted d-block">
+          Responsable: <strong>{{ extraerResponsable(noti.mensaje) || 'N/A' }}</strong>
+        </small>
+        <small class="text-secondary">
+          {{ noti.createdAt | date: 'dd MMMM yyyy - HH:mm':'':'es' }}
+        </small>
+      </div>
+      <div class="ms-3 fs-4">
+        <i [ngClass]="getIconoClase(noti.tipo)"></i>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <button class="btn btn-outline-light me-2" (click)="cambiarPagina(-1)" [disabled]="paginaActual === 1">⬅ Anterior</button>
+      <span class="text-white">Página {{ paginaActual }} de {{ totalPaginas }}</span>
+      <button class="btn btn-outline-light ms-2" (click)="cambiarPagina(1)" [disabled]="paginaActual === totalPaginas">Siguiente ➡</button>
+    </div>
+  </div>
+
+  <ng-template #sinNotificaciones>
+    <p class="text-muted text-center">No hay notificaciones que coincidan.</p>
+  </ng-template>
+</div>
+

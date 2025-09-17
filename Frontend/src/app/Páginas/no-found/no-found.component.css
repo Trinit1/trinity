@@ -1,0 +1,21 @@
+.btn-custom {
+    background-color: purple;
+    color: white;
+    border: none;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px purple;
+}
+
+.btn-custom:hover {
+    background-color: #9b59b6;
+    box-shadow: 0 6px 14px purple;
+}
+
+.img-fluid {
+    max-width: 300px;
+}
+
+h2, p {
+    color: white;
+    font-weight: bolder;
+}

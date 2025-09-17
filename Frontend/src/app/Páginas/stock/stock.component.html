@@ -1,0 +1,122 @@
+<div class="container my-5">
+  <h2 class="mb-4 text-center text-light">📦 Stock General</h2>
+
+  <form class="row g-3 mb-4" (ngSubmit)="editandoCategoria ? actualizarCategoria() : agregarCategoria()">
+  
+    <div class="col-md-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Nombre de la categoría"
+        [(ngModel)]="nombreCategoria"
+        name="nombreCategoria"
+        required
+      />
+    </div>
+
+<div class="col-md-4">
+  <input
+    type="file"
+    accept="image/*"
+    class="form-control"
+    (change)="onImagenSeleccionada($event)"
+  />
+</div>
+
+    <div class="col-md-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Descripción"
+        [(ngModel)]="descripcionCategoria"
+        name="descripcionCategoria"
+        required
+      />
+    </div>
+
+    <div class="col-md-2 d-flex gap-2">
+      <button type="submit" class="btn btn-success w-100">
+        {{ editandoCategoria ? 'Actualizar' : 'Agregar' }} categoría
+      </button>
+      <button *ngIf="editandoCategoria" type="button" class="btn btn-secondary w-100" (click)="cancelarEdicion()">
+        Cancelar
+      </button>
+    </div>
+  </form>
+
+<div *ngIf="imagenPreview" class="mb-3 text-center">
+  <img
+    [src]="imagenPreview"
+    alt="Vista previa"
+    class="img-thumbnail"
+    style="max-height: 150px"
+  />
+</div>
+
+
+  <div *ngIf="mensajeExitoCategoria" class="alert alert-success text-center py-2">
+    {{ mensajeExitoCategoria }}
+  </div>
+  <div *ngIf="mensajeErrorCategoria" class="alert alert-danger text-center py-2">
+    {{ mensajeErrorCategoria }}
+  </div>
+
+  <div class="row g-4 justify-content-center">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let item of resumenPaginado()">
+      <div class="p-3 rounded bg-dark text-center shadow-lg border border-purple card-option h-100 d-flex flex-column justify-content-between">
+        <div>
+          <h3 class="h6 text-white mb-3">{{ item.categoria }}</h3>
+          <a [routerLink]="['/productos/categoria', item.id]">
+            <img
+  [src]="item.imageUrl ? 'http://localhost:3000' + item.imageUrl : getImagen(item.categoria)"
+  class="img-fluid rounded category-img mb-3"
+  [alt]="'Imagen de ' + item.categoria"
+  style="cursor: pointer;"
+  (error)="reemplazarImagenPorDefecto(item)"
+/>
+
+          </a>
+          <p class="text-light small">Total: <strong>{{ item.total }}</strong></p>
+        </div>
+        <div class="mt-2 d-flex justify-content-center gap-2">
+          <button class="btn btn-warning btn-sm" (click)="prepararEdicion(item)">📝 Editar</button>
+          <button class="btn btn-danger btn-sm" (click)="eliminarCategoria(item.id)">🗑️ Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pagination-controls d-flex justify-content-center align-items-center gap-3 mt-4">
+    <button class="btn btn-outline-light btn-sm" (click)="cambiarPagina(-1)" [disabled]="paginaActual === 1">
+      ⬅ Anterior
+    </button>
+    <span class="text-white">Página {{ paginaActual }} de {{ totalPaginas() }}</span>
+    <button class="btn btn-outline-light btn-sm" (click)="cambiarPagina(1)" [disabled]="paginaActual === totalPaginas()">
+      Siguiente ➡
+    </button>
+  </div>
+
+  <div class="mt-5">
+    <h4 class="text-center text-light mb-3">📊 Resumen general</h4>
+    <div class="table-responsive">
+      <table class="table table-dark table-striped table-bordered text-center">
+        <thead>
+          <tr>
+            <th>Categoría</th>
+            <th>Disponible</th>
+            <th>Stock mínimo</th>
+            <th>Última actualización</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of resumen">
+            <td>{{ item.categoria }}</td>
+            <td>{{ item.disponible }}</td>
+            <td>{{ item.minimo }}</td>
+            <td>{{ item.ultima_actualizacion }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

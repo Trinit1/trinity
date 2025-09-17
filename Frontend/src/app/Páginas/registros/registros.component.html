@@ -1,0 +1,116 @@
+<div class="container py-5">
+  <h2 class="text-center text-light mb-5">
+    <i class="bi bi-box-seam-fill text-info me-2"></i> Gestión de productos
+  </h2>
+
+  <div class="bg-dark p-4 rounded border border-success shadow mb-5">
+    <fieldset>
+      <legend class="text-light fs-5 mb-3">
+        <i class="bi bi-box-arrow-up text-warning me-2"></i> Registrar salida
+      </legend>
+
+      <form (ngSubmit)="registrarSalida()" #salidaForm="ngForm">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="productoId" class="form-label text-light text-uppercase">Producto</label>
+            <select id="productoId" class="form-select" required name="productoId"
+              [(ngModel)]="salida.productoId" [disabled]="cargando">
+              <option value="" disabled selected>Seleccione un producto</option>
+              <option *ngFor="let prod of productos" [value]="prod.id">{{ prod.name }}</option>
+            </select>
+          </div>
+
+          <div class="col-md-6">
+            <label for="cantidad" class="form-label text-light text-uppercase">Cantidad</label>
+            <input type="number" id="cantidad" name="cantidad" class="form-control" required min="1"
+              [max]="productoSeleccionado?.quantity || 1"
+              [(ngModel)]="salida.cantidad" [disabled]="!salida.productoId || cargando" />
+            <small class="form-text text-warning">Disponible: {{ productoSeleccionado?.quantity ?? '...' }}</small>
+          </div>
+
+          <div class="col-md-6">
+            <label for="fecha" class="form-label text-light text-uppercase">Fecha</label>
+            <input type="date" id="fecha" name="fecha" class="form-control" required [(ngModel)]="salida.fecha" />
+          </div>
+
+          <div class="col-md-6">
+            <label for="hora" class="form-label text-light text-uppercase">Hora</label>
+            <input type="time" id="hora" name="hora" class="form-control" required [(ngModel)]="salida.hora" />
+          </div>
+
+          <div class="col-12">
+            <label for="nota" class="form-label text-light text-uppercase">Nota</label>
+            <textarea id="nota" name="nota" class="form-control" rows="2" [(ngModel)]="salida.nota"
+              placeholder="Escribe una observación si es necesario..."></textarea>
+          </div>
+
+          <div class="col-12">
+            <label for="responsable" class="form-label text-light text-uppercase">Responsable</label>
+            <input type="text" id="responsable" name="responsable" class="form-control" required
+              [(ngModel)]="salida.responsable" placeholder="Nombre del responsable" />
+          </div>
+
+          <div class="col-12 text-end">
+            <button type="submit" class="btn btn-outline-success fw-bold"
+              [disabled]="!salidaForm.form.valid || cargando">
+              <i class="bi bi-check-circle me-1"></i> Registrar salida
+            </button>
+          </div>
+        </div>
+      </form>
+    </fieldset>
+  </div>
+
+  <div class="bg-dark p-4 rounded border border-info shadow">
+    <fieldset>
+      <legend class="text-light fs-5 mb-3">
+        <i class="bi bi-plus-circle text-info me-2"></i> Agregar nuevo producto
+      </legend>
+
+      <form (ngSubmit)="crearProducto()" #productoForm="ngForm">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="nombre" class="form-label text-light text-uppercase">Nombre</label>
+            <input type="text" id="nombre" name="nombre" class="form-control" required [(ngModel)]="nuevoProducto.name" />
+          </div>
+
+          <div class="col-md-6">
+            <label for="cantidadNuevo" class="form-label text-light text-uppercase">Cantidad</label>
+            <input type="number" id="cantidadNuevo" name="cantidad" class="form-control" required min="1"
+              [(ngModel)]="nuevoProducto.quantity" />
+          </div>
+
+          <div class="col-md-6">
+            <label for="categoria" class="form-label text-light text-uppercase">Categoría</label>
+            <select id="categoria" name="categoria" class="form-select" required [(ngModel)]="nuevoProducto.category_id">
+              <option value="" disabled selected>Seleccione una categoría</option>
+              <option *ngFor="let cat of categorias" [value]="cat.id">{{ cat.name }}</option>
+            </select>
+          </div>
+
+          <div class="col-md-6">
+            <label for="imagen" class="form-label text-light text-uppercase">URL Imagen</label>
+            <input type="text" id="imagen" name="imagen" class="form-control" [(ngModel)]="nuevoProducto.imageUrl" />
+          </div>
+
+          <div class="col-12">
+            <label for="responsableNuevo" class="form-label text-light text-uppercase">Responsable</label>
+            <input type="text" id="responsableNuevo" name="responsable" class="form-control" required
+              [(ngModel)]="nuevoProducto.responsable" />
+          </div>
+
+          <div class="col-12 text-end">
+            <button type="submit" class="btn btn-outline-info fw-bold" [disabled]="!productoForm.form.valid">
+              <i class="bi bi-save2 me-1"></i> Agregar producto
+            </button>
+          </div>
+        </div>
+      </form>
+    </fieldset>
+  </div>
+
+  <div class="toast-notificacion mt-4" *ngIf="mostrarToast">
+    {{ mensajeToast }}
+  </div>
+</div>
+

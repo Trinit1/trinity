@@ -1,0 +1,154 @@
+body {
+  background-color: #1b1e23;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+}
+
+h2, h3, h4, h5, p, small {
+  color: white;
+  text-transform: uppercase;
+}
+
+
+form input.form-control,
+form select.form-select {
+  background-color: #2c2f33;
+  border: 1px solid purple;
+  color: white;
+  box-shadow: 0 2px 8px rgba(128, 0, 128, 0.3);
+  text-transform: uppercase;
+}
+
+input::placeholder,
+input[type="text"]::placeholder {
+  color: #cccccc;
+}
+
+form .btn-primary {
+  background-color: cyan;
+  border: none;
+  color: purple;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 4px 10px purple;
+}
+
+form .btn-secondary {
+  background-color: #888;
+  border: none;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+
+.alert {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+input[name="terminoBusqueda"],
+select[name="categoriaFiltro"] {
+  background-color: #2c2f33;
+  border: 1px solid purple;
+  color: white;
+  text-transform: uppercase;
+  box-shadow: 0 2px 6px rgba(128, 0, 128, 0.2);
+}
+
+
+.product-list {
+  padding: 1rem 0;
+}
+
+.product-list .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.product-card {
+  background-color: #212529;
+  border-radius: 12px;
+  height: 100%;
+  padding: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px purple;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px purple;
+}
+
+.product-img {
+  max-height: 140px;
+  object-fit: contain;
+  border-radius: 10px;
+  background-color: #343a40;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+
+.btn-sm {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 4px 10px;
+  border: none;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.btn-success {
+  background-color: cyan;
+  color: purple;
+  box-shadow: 0 4px 10px purple;
+}
+
+.btn-danger {
+  background-color: crimson;
+  color: white;
+  box-shadow: 0 4px 10px rgba(220, 20, 60, 0.5);
+}
+
+.btn-outline-light {
+  border: 1px solid white;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.btn-outline-light:hover {
+  background-color: white;
+  color: black;
+}
+
+
+.paginacion {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.paginacion span {
+  color: white;
+  font-weight: bold;
+}
+
+@media (max-width: 576px) {
+  .product-card {
+    padding: 0.75rem;
+  }
+
+  .product-img {
+    max-height: 120px;
+  }
+}

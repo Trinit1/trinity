@@ -1,0 +1,134 @@
+.card.chart-card {
+    background-color: #212529;
+    color: white;
+    box-shadow: 0 4px 15px purple;
+    border-radius: 10px;
+  }
+  
+  .card.chart-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    text-transform: uppercase;
+  }
+  
+  .list-group-item {
+    border: none;
+    border-bottom: 1px solid #444;
+  }
+  
+  .list-group-item:last-child {
+    border-bottom: none;
+  }
+
+  .card.chart-card {
+    background-color: #212529;
+    color: white;
+    box-shadow: 0 4px 15px purple;
+    border-radius: 10px;
+  }
+  
+  .btn-custom {
+    background-color: purple;
+    color: white;
+    border: none;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px purple;
+  }
+  
+  .btn-custom:hover {
+    background-color: #9b59b6;
+    box-shadow: 0 6px 14px purple;
+  }
+  
+  input.form-control {
+    border: none;
+    box-shadow: inset 0 0 5px cyan;
+  }
+  
+  main {
+    background-color: #212529;
+  }
+  
+  h2 {
+    color: white;
+    text-transform: uppercase;
+  }
+  
+  .product-list.scroll-container {
+    max-height: 600px;
+    overflow-y: auto;
+    border: 2px solid purple;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px purple;
+    background-color: #1a1d20;
+  }
+  
+  .card-option {
+    background-color: #212529;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px purple;
+  }
+  
+  .card-option:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px purple;
+  }
+  
+  .btn {
+    text-transform: uppercase;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+  }
+  
+  .btn-success {
+    background-color: white}
+  
+
+    main {
+        background-color: #212529;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .welcome-box {
+        background-color: #1a1d20;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px purple;
+        color: white;
+        text-transform: uppercase;
+      }
+      
+      h1 {
+        font-size: 2.5rem;
+        color: white;
+      }
+      
+      .btn-custom {
+        background-color: purple;
+        color: white;
+        border: none;
+        text-transform: uppercase;
+        font-weight: bold;
+        box-shadow: 0 4px 10px purple;
+      }
+      
+      .btn-custom:hover {
+        background-color: #9b59b6;
+        box-shadow: 0 6px 14px purple;
+      }
+      
+      .btn-outline-light {
+        border: 2px solid white;
+        text-transform: uppercase;
+        font-weight: bold;
+        color: white;
+      }
+      
+      .btn-outline-light:hover {
+        background-color: white;
+        color: #212529;
+      }
+      

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página de Alertas y Notificaciones</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="alertas.css">
+</head>
+<body>
+  
+  <header class="header">
+    <div class="texto-principal">
+        <h3>TRINITY</h3>
+    </div>
+    <div class="menu">
+        <div class="logo">
+            <img src="../img/Trinity.png" alt="Logo">
+        </div>
+        <nav class="nav">
+            <a href="../Home/home.html">Home</a>
+            <a href="../Categoría/categoria.html">Categorías</a>
+            <a href="../Categoría/categoria.html">Subcategorías</a>
+            <a href="../Gestionar/gestionar.html">Salidas</a>
+            <a href="../Usuarios/usuarios.html">Proveedores</a>
+            <a href="../Gestionar/gestionar.html">Devoluciones</a>
+            <a href="../Usuarios/usuarios.html">Usuarios</a>
+            <a href="../Alertas/alertas.html">Alertas</a>
+        </nav>
+        <a href="../GestionarUser/gestionarU.html">
+            <div class="usuario">
+                <img src="../img/user.webp" alt="user">
+            </div>
+        </a>
+    </div>
+</header>
+
+  <div class="container">
+    <header>
+      <div class="logo-container">
+        
+        <h1>Alertas y Notificaciones</h1>
+      </div>
+    </header>
+
+    <section class="alerts-section">
+      <h2>Crear Alerta</h2>
+      <form id="alertForm">
+        <div class="form-group">
+          <label for="alert-title">Título de la Alerta:</label>
+          <input type="text" id="alert-title" name="alert-title" >
+        </div>
+        <div class="form-group">
+          <label for="alert-message">Mensaje de la Alerta:</label>
+          <textarea id="alert-message" name="alert-message" rows="4" ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="alert-type">Tipo de Alerta:</label>
+          <select id="alert-type" name="alert-type" >
+            <option value="info">Información</option>
+            <option value="success">Éxito</option>
+            <option value="warning">Advertencia</option>
+            <option value="error">Error</option>
+          </select>
+        </div>
+        <div class="button-group">
+          <a href="../Home/home.html">
+            <button type="submit" class="btn-primary">Crear Alerta</button>
+          </a>
+          <button type="reset" class="btn-secondary">Limpiar</button>
+          <button type="button" class="btn-info">Ver Alertas</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="notifications-section">
+      <h2>Crear Notificación</h2>
+      <form id="notificationForm">
+        <div class="form-group">
+          <label for="notification-title">Título de la Notificación:</label>
+          <input type="text" id="notification-title" name="notification-title">
+        </div>
+        <div class="form-group">
+          <label for="notification-message">Mensaje de la Notificación:</label>
+          <textarea id="notification-message" name="notification-message" rows="4"></textarea>
+        </div>
+        <div class="button-group">
+          <a href="../Home/home.html">
+            <button type="submit" class="btn-primary">Crear Notificación</button>
+          </a>
+          <button type="reset" class="btn-secondary">Limpiar</button>
+          <button type="button" class="btn-info">Ver Notificaciones</button>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <div pie>
+    <footer>
+        <p>
+            Todos los derechos de autor reservados por TRINITY [2024].
+        </p>
+    </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRINITY</title>
+    <link rel="stylesheet" href="gestionarU.css">
+</head>
+<body>
+    <div class="container">
+        <h1>TRINITY</h1>
+        <nav class="menu">
+            <a href="../Home/home.html">Home</a>
+            <a href="../Categoría/categoria.html">Categorías</a>
+            <a href="../Gestionar/gestionar.html">Subcategorías</a>
+            <a href="../Gestionar/gestionar.html">Salidas</a>
+            <a href="../Gestionar/gestionar.html">Pedidos</a>
+            <a href="../Usuarios/usuarios.html">Proveedores</a>
+            <a href="../Gestionar/gestionar.html">Devoluciones</a>
+            <a href="../Usuarios/usuarios.html">Usuarios</a>
+            <a href="../Alertas/alertas.html">Alertas</a>
+        </nav>
+
+        <div class="content">
+            <div class="usuarios-section">
+                <h2>Gestionar Usuario</h2>
+                <form class="user-form">
+                    <div class="campos2">
+                        <div class="form-row">
+                            <label for="doc">Tipo de documento:</label>
+                            <select>
+                                <option value="" disabled selected>Documento de identidad</option>
+            <option value="Cedula">Cédula de ciudadanía</option>
+            <option value="Cedula">Cédula de extranjería</option>
+            <option value="Cedula">Pasaporte</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <label for="num-doc">Número de documento:</label>
+                            <input type="tel" id="telefono" name="telefono">
+                        </div>
+                        <div class="form-row">
+                            <label for="fecha-nacimiento">Fecha de expedición:</label>
+                            <input type="date" id="fecha-nacimiento" name="fecha-nacimiento">
+                        </div>
+                    <div class="form-row">
+                        <label for="telefono">primer nombre:</label>
+                        <input type="tel" id="telefono" name="telefono">
+                    </div>
+                    <div class="form-row">
+                        <label for="usuario">segundo nombre:</label>
+                        <input type="text" id="usuario" name="usuario">
+                    </div>
+                    <div class="form-row">
+                        <label for="contraseña">primer apellido:</label>
+                        <input type="text" id="contraseña" name="contraseña">
+                    </div>
+                    <div class="form-row">
+                        <label for="contraseña">segundo apellido:</label>
+                        <input type="text" id="contraseña" name="contraseña">
+                    </div>
+                </div>
+
+                    <div class=" campos1">
+                        <div class="form-row">
+                            <label for="doc">Tipo de documento:</label>
+                            <select>
+                                <option value="" disabled selected>Sexo</option>
+            <option value="Cedula">Masculino</option>
+            <option value="Cedula">Femenino</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <label for="telefono">Teléfono:</label>
+                            <input type="tel" id="telefono" name="telefono">
+                        </div>
+                        <div class="form-row">
+                            <label for="contraseña">Correo electrónico:</label>
+                            <input type="text" id="contraseña" name="contraseña">
+                        </div>
+                    <div class="form-row">
+                        <label for="codigo-postal">Eps:</label>
+                        <input type="text" id="codigo-postal" name="codigo-postal">
+                    </div>
+                    <div class="form-row">
+                        <label for="pais">Rol:</label>
+                        <select id="genero" name="genero">
+                            <option value="masculino">Vendedor</option>
+                            <option value="femenino">Proveedor</option>
+                            <option value="otro">Bodeguero</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <label for="codigo-postal">Usuario:</label>
+                        <input type="text" id="codigo-postal" name="codigo-postal">
+                    </div>
+                    <div class="form-row"></div>
+                        <label for="codigo-postal">Contraseña:</label>
+                        <input type="password" id="codigo-postal" name="codigo-postal">
+                    </div>
+                </div>
+                </form>
+
+                <div class="form-row">
+                    <button type="submit"><a href="../Home/home.html"> Guardar Cambios </a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
