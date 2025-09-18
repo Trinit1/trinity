@@ -1,81 +1,68 @@
-<div class="container my-5">
-  <h2 class="text-center mb-4 text-primary">🔔 Historial de notificaciones</h2>
-
-  <div class="row g-3 mb-4 align-items-end">
-    <div class="col-md-3">
-      <select class="form-select" [(ngModel)]="filtroTipo">
-        <option value="">Todos los tipos</option>
-        <option value="info">Info</option>
-        <option value="success">Éxito</option>
-        <option value="warning">Advertencia</option>
-        <option value="error">Error</option>
-      </select>
-    </div>
-
-    <div class="col-md-3">
-      <label class="form-label text-white">Desde</label>
-      <input type="date" class="form-control" [(ngModel)]="filtroDesde">
-    </div>
-
-    <div class="col-md-3">
-      <label class="form-label text-white">Hasta</label>
-      <input type="date" class="form-control" [(ngModel)]="filtroHasta">
-    </div>
-
-    <div class="col-md-3 text-end">
-      <button class="btn btn-outline-light" (click)="resetFiltros()">Reiniciar filtros</button>
-    </div>
-  </div>
-
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <div class="text-white">
-      <strong>Ordenar por:</strong>
-    </div>
-
-    <div class="btn-group">
-      <button class="btn btn-outline-light btn-sm" (click)="ordenFecha = ordenFecha === 'asc' ? 'desc' : 'asc'">
-        Fecha {{ ordenFecha === 'asc' ? '↑' : '↓' }}
-      </button>
-      <button class="btn btn-outline-light btn-sm" (click)="ordenTipo = ordenTipo === 'asc' ? 'desc' : 'asc'">
-        Tipo {{ ordenTipo === 'asc' ? 'A-Z' : 'Z-A' }}
-      </button>
-    </div>
-  </div>
-
-  <div *ngIf="notificacionesFiltradas.length > 0; else sinNotificaciones">
-    <div
-      *ngFor="let noti of notificacionesPaginadas"
-      class="alert d-flex justify-content-between align-items-start shadow-sm border rounded-3 p-3 mb-3"
-      [ngClass]="{
-        'alert-info': noti.tipo === 'info',
-        'alert-success': noti.tipo === 'success',
-        'alert-warning': noti.tipo === 'warning',
-        'alert-danger': noti.tipo === 'error'
-      }"
-    >
-      <div class="flex-grow-1">
-        <p class="mb-1">{{ noti.mensaje }}</p>
-        <small class="text-muted d-block">
-          Responsable: <strong>{{ extraerResponsable(noti.mensaje) || 'N/A' }}</strong>
-        </small>
-        <small class="text-secondary">
-          {{ noti.createdAt | date: 'dd MMMM yyyy - HH:mm':'':'es' }}
-        </small>
+<main>
+    <div class="container py-4">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="m-0">Historial de notificaciones</h2>
+        <a routerLink="/detalles" class="btn btn-custom">+ Nueva notificación</a>
       </div>
-      <div class="ms-3 fs-4">
-        <i [ngClass]="getIconoClase(noti.tipo)"></i>
+  
+      <!-- Alta prioridad -->
+      <div class="alert border border-danger">
+        <p class="mb-1"><strong>Juan Pérez</strong> eliminó <strong>15 productos</strong> del inventario.</p>
+        <small>📅 21 abril 2025 - 🕒 10:32 AM</small>
+        <div class="mt-2">
+          <a routerLink="/detalles" class="btn btn-sm btn-outline-light">Ver más</a>
+        </div>
+      </div>
+  
+      <div class="alert border border-danger">
+        <p class="mb-1"><strong>Sistema</strong>: cambios masivos detectados sin justificación.</p>
+        <small>📅 20 abril 2025 - 🕒 5:12 PM</small>
+        <div class="mt-2">
+          <a routerLink="/detalles" class="btn btn-sm btn-outline-light">Ver más</a>
+        </div>
+      </div>
+  
+      <!-- Media prioridad -->
+      <div class="alert border border-warning">
+        <p class="mb-1"><strong>Laura Gómez</strong> modificó cantidades en <strong>8 productos</strong>.</p>
+        <small>📅 20 abril 2025 - 🕒 3:40 PM</small>
+        <div class="mt-2">
+          <a routerLink="/detalles" class="btn btn-sm btn-outline-light">Ver más</a>
+        </div>
+      </div>
+  
+      <div class="alert border border-warning">
+        <p class="mb-1"><strong>Carlos Torres</strong> actualizó precios en <em>Electrónica</em>.</p>
+        <small>📅 19 abril 2025 - 🕒 6:50 PM</small>
+        <div class="mt-2">
+          <a routerLink="/detalles" class="btn btn-sm btn-outline-light">Ver más</a>
+        </div>
+      </div>
+  
+      <!-- General -->
+      <div class="alert border border-info">
+        <p class="mb-1">Se agregaron <strong>120 productos</strong> esta semana.</p>
+        <small>📅 18 abril 2025 - 🕒 9:20 AM</small>
+        <div class="mt-2">
+          <a routerLink="/detalles" class="btn btn-sm btn-outline-light">Ver más</a>
+        </div>
+      </div>
+  
+      <div class="alert border border-info">
+        <p class="mb-1">Se vendieron <strong>240 unidades</strong> en las últimas 24 horas.</p>
+        <small>📅 18 abril 2025 - 🕒 8:00 AM</small>
+        <div class="mt-2">
+          <a routerLink="/detalles" routerLinkActive="active" class="btn btn-sm btn-outline-light">ver más</a>
+        </div>
+      </div>
+  
+      <div class="alert border border-info">
+        <p class="mb-1">Producto más vendido: <strong>Audífonos inalámbricos</strong> (55 unidades).</p>
+        <small>📅 17 abril 2025 - 🕒 6:45 PM</small>
+        <div class="mt-2">
+          <a routerLink="/detalles" class="btn btn-sm btn-outline-light">Ver más</a>
+        </div>
       </div>
     </div>
-
-    <div class="text-center mt-4">
-      <button class="btn btn-outline-light me-2" (click)="cambiarPagina(-1)" [disabled]="paginaActual === 1">⬅ Anterior</button>
-      <span class="text-white">Página {{ paginaActual }} de {{ totalPaginas }}</span>
-      <button class="btn btn-outline-light ms-2" (click)="cambiarPagina(1)" [disabled]="paginaActual === totalPaginas">Siguiente ➡</button>
-    </div>
-  </div>
-
-  <ng-template #sinNotificaciones>
-    <p class="text-muted text-center">No hay notificaciones que coincidan.</p>
-  </ng-template>
-</div>
-
+  </main>
+  

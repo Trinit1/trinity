@@ -3,66 +3,21 @@
     <div class="container py-5">
       <div class="row justify-content-center">
         <div class="col-md-6">
-          <div id="login-form" class="card chart-card p-4 bg-dark border border-secondary shadow">
-            <h2 class="text-center mb-4 text-white">Iniciar sesión</h2>
-
-            <form (ngSubmit)="onLogin()" #loginForm="ngForm" novalidate>
+          <div id="login-form" class="card chart-card p-4">
+            <h2 class="text-center mb-4">Iniciar sesión</h2>
+            <form (ngSubmit)="onLogin()" #loginForm="ngForm">
               <div class="mb-3">
-                <label for="email" class="form-label text-white text-uppercase">Correo electrónico</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  email
-                  [(ngModel)]="email"
-                  [disabled]="cargando"
-                  class="form-control bg-dark text-white"
-                  #emailField="ngModel"
-                  [ngClass]="{ 'is-invalid': loginForm.submitted && emailField.invalid }"
-                />
-                <div *ngIf="loginForm.submitted && emailField.invalid" class="invalid-feedback">
-                  Ingresa un correo válido.
-                </div>
+                <label class="form-label text-white text-uppercase">Correo electrónico</label>
+                <input type="email" class="form-control bg-dark text-white" required [(ngModel)]="email" name="email">
               </div>
-
               <div class="mb-3">
-                <label for="password" class="form-label text-white text-uppercase">Contraseña</label>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  required
-                  minlength="4"
-                  [(ngModel)]="password"
-                  [disabled]="cargando"
-                  class="form-control bg-dark text-white"
-                  #passwordField="ngModel"
-                  [ngClass]="{ 'is-invalid': loginForm.submitted && passwordField.invalid }"
-                />
-                <div *ngIf="loginForm.submitted && passwordField.invalid" class="invalid-feedback">
-                  La contraseña debe tener al menos 4 caracteres.
-                </div>
+                <label class="form-label text-white text-uppercase">Contraseña</label>
+                <input type="password" class="form-control bg-dark text-white" required [(ngModel)]="password" name="password">
               </div>
-
-              <button
-                type="submit"
-                class="btn btn-custom w-100 mt-2 fw-bold"
-                [disabled]="cargando || loginForm.invalid"
-              >
-                {{ cargando ? 'Ingresando...' : 'Ingresar' }}
-              </button>
-
-              <div *ngIf="mensajeError" class="alert alert-danger mt-3 text-center">
-                {{ mensajeError }}
-              </div>
+              <button type="submit" class="btn btn-custom w-100 mt-2">Ingresar</button>
             </form>
-
             <div class="text-center mt-3">
-              <small class="text-white">
-                ¿No tienes cuenta?
-                <a routerLink="/registro" class="text-info text-decoration-none">Regístrate aquí</a>
-              </small>
+              <small class="text-white">¿No tienes cuenta? <a routerLink="/registro" class="text-info">Regístrate aquí</a></small>
             </div>
           </div>
         </div>
@@ -70,4 +25,3 @@
     </div>
   </main>
 </section>
-

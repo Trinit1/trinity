@@ -16,7 +16,7 @@
     </ul>
 
     <ul class="navbar-nav mb-2 mb-lg-0">
-    
+      <!-- Mostrar saludo y botón de cierre de sesión si está autenticado -->
       <li class="nav-item text-white me-3" *ngIf="estaAutenticado()">
         Bienvenido, {{ nombreUsuario }}
       </li>
@@ -24,7 +24,7 @@
         <a class="nav-link nav-underline text-danger" style="cursor: pointer" (click)="cerrarSesion()">Cerrar sesión</a>
       </li>
 
-   
+      <!-- Mostrar botón de login si NO está autenticado -->
       <li class="nav-item" *ngIf="!estaAutenticado()">
         <a class="nav-link nav-underline text-success" routerLink="/login">Iniciar sesión</a>
       </li>

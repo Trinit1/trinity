@@ -7,10 +7,10 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s ease;
   border: none;
-  overflow: hidden;
+  overflow: hidden; /* Asegura que nada se salga visualmente */
   display: flex;
   flex-direction: column;
-  height: 100%; 
+  height: 100%; /* Hace que la tarjeta ocupe todo el alto disponible */
 }
 
 .card:hover {
@@ -38,7 +38,7 @@
 }
 
 .card-body {
-  flex-grow: 1; 
+  flex-grow: 1; /* Empuja los botones hacia abajo si hay espacio */
   display: flex;
   flex-direction: column;
   justify-content: space-between;

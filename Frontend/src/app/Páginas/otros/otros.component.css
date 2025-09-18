@@ -105,6 +105,11 @@
         font-size: 2.5rem;
         color: white;
       }
+      git remote add origin https://github.com/Juankpr0/Sustentaci-n.git
+      p {
+        font-size: 1.1rem;
+        color: #cccccc;
+      }
       
       .btn-custom {
         background-color: purple;

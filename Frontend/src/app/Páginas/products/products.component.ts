@@ -1,190 +1,153 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule, NgFor, NgIf } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { ProductService, Product } from '../../services/product.service';
+import { AxiosService } from '../../services/axios.service';
 import { CategoryService } from '../../services/category.service';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-products',
   standalone: true,
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
-  imports: [CommonModule, FormsModule, NgFor, NgIf]
+  imports: [FormsModule, RouterModule, NgIf, NgFor]
 })
 export class ProductsComponent implements OnInit {
-  productos: Product[] = [];
+  productos: any[] = [];
   categorias: any[] = [];
 
   nombre = '';
-  cantidad = 1;
   categoriaId: number | null = null;
+  cantidad: number | null = null;
   imagenUrl = '';
-  productoEditando: Product | null = null;
 
   mensajeExito = '';
   mensajeError = '';
 
-  terminoBusqueda = '';
-  categoriaFiltro = '';
-
-  currentPage = 1;
-  readonly itemsPerPage = 9;
-
-  mostrarFormulario = false;
+  productoEditando: any = null;
 
   constructor(
-    private readonly productService: ProductService,
-    private readonly categoryService: CategoryService
+    private axiosService: AxiosService,
+    private categoryService: CategoryService
   ) {}
 
   ngOnInit(): void {
-    this.cargarProductos();
+    this.obtenerProductos();
     this.cargarCategorias();
   }
 
-  cargarProductos(): void {
-    this.productService.getAll().subscribe({
-      next: data => this.productos = data,
-      error: err => console.error('Error cargando productos', err)
-    });
-  }
-
   cargarCategorias(): void {
-    this.categoryService.getCategorias().subscribe({
-      next: data => this.categorias = data,
-      error: err => console.error('Error cargando categorías', err)
+    this.categoryService.obtenerCategorias().subscribe({
+      next: (data) => {
+        this.categorias = data;
+      },
+      error: (error) => {
+        console.error('Error al cargar categorías:', error);
+        this.mensajeError = 'Error al cargar las categorías.';
+      }
     });
   }
 
-  nuevoProducto(): void {
-    this.resetFormulario();
-    this.mostrarFormulario = true;
+  async obtenerProductos(): Promise<void> {
+    try {
+      this.productos = await this.axiosService.obtenerProductos();
+    } catch (error) {
+      console.error('Error al obtener productos:', error);
+      this.mensajeError = 'No se pudieron cargar los productos.';
+    }
+  }
+
+  async agregarProducto(): Promise<void> {
+    if (this.productoEditando) return;
+
+    this.mensajeExito = '';
+    this.mensajeError = '';
+
+    if (!this.nombre || this.categoriaId == null || this.cantidad == null) {
+      this.mensajeError = 'Completa todos los campos.';
+      return;
+    }
+
+    const nuevoProducto = {
+      name: this.nombre,
+      quantity: this.cantidad,
+      category_id: this.categoriaId,
+      imageUrl: this.imagenUrl || null
+    };
+
+    try {
+      await this.axiosService.crearProducto(nuevoProducto);
+      this.mensajeExito = '¡Producto agregado exitosamente!';
+      await this.obtenerProductos();
+      this.resetFormulario();
+    } catch (error) {
+      console.error('Error al agregar producto:', error);
+      this.mensajeError = 'Error al agregar el producto.';
+    }
+  }
+
+  async actualizarProducto(): Promise<void> {
+    this.mensajeExito = '';
+    this.mensajeError = '';
+
+    if (!this.nombre || this.categoriaId == null || this.cantidad == null) {
+      this.mensajeError = 'Completa todos los campos.';
+      return;
+    }
+
+    const productoActualizado = {
+      name: this.nombre,
+      quantity: this.cantidad,
+      category_id: this.categoriaId,
+      imageUrl: this.imagenUrl || null
+    };
+
+    try {
+      await this.axiosService.actualizarProducto(this.productoEditando.id, productoActualizado);
+      this.mensajeExito = '¡Producto actualizado exitosamente!';
+      await this.obtenerProductos();
+      this.resetFormulario();
+    } catch (error) {
+      console.error('Error al actualizar producto:', error);
+      this.mensajeError = 'Error al actualizar el producto.';
+    }
+  }
+
+  cargarProducto(producto: any): void {
+    this.productoEditando = producto;
+    this.nombre = producto.name;
+    this.categoriaId = producto.category_id;
+    this.cantidad = producto.quantity;
+    this.imagenUrl = producto.imageUrl || '';
+    this.mensajeError = '';
+    this.mensajeExito = '';
   }
 
   cancelarEdicion(): void {
     this.resetFormulario();
-    this.mostrarFormulario = false;
-  }
-
-  agregarProducto(): void {
-    if (!this.nombre || !this.categoriaId || this.cantidad < 1) {
-      this.mostrarError('❌ Completa todos los campos correctamente');
-      return;
-    }
-
-    const nuevo: Product = {
-      name: this.nombre,
-      quantity: this.cantidad,
-      category_id: this.categoriaId,
-      imageUrl: this.imagenUrl
-    };
-
-    this.productService.create(nuevo).subscribe({
-      next: () => {
-        this.mostrarExito('✅ Producto agregado');
-        this.resetFormulario();
-        this.cargarProductos();
-        this.mostrarFormulario = false;
-      },
-      error: () => this.mostrarError('❌ Error al agregar producto')
-    });
-  }
-
-  actualizarProducto(): void {
-    if (!this.productoEditando?.id) return;
-
-    const actualizado: Product = {
-      name: this.nombre,
-      quantity: this.cantidad,
-      category_id: this.categoriaId!,
-      imageUrl: this.imagenUrl
-    };
-
-    this.productService.update(this.productoEditando.id, actualizado).subscribe({
-      next: () => {
-        this.mostrarExito('✅ Producto actualizado');
-        this.resetFormulario();
-        this.cargarProductos();
-        this.mostrarFormulario = false;
-      },
-      error: () => this.mostrarError('❌ Error al actualizar producto')
-    });
-  }
-
-  cargarProducto(producto: Product): void {
-    this.productoEditando = producto;
-    this.nombre = producto.name;
-    this.cantidad = producto.quantity;
-    this.categoriaId = producto.category_id;
-    this.imagenUrl = producto.imageUrl || '';
-    this.mostrarFormulario = true;
-  }
-
-  removerProducto(producto: Product): void {
-    if (!producto.id || !confirm('¿Eliminar este producto?')) return;
-
-    this.productService.delete(producto.id).subscribe({
-      next: () => {
-        this.mostrarExito('✅ Producto eliminado');
-        this.cargarProductos();
-      },
-      error: () => this.mostrarError('❌ Error al eliminar producto')
-    });
+    this.mensajeExito = 'Edición cancelada.';
   }
 
   resetFormulario(): void {
     this.nombre = '';
-    this.cantidad = 1;
     this.categoriaId = null;
+    this.cantidad = null;
     this.imagenUrl = '';
     this.productoEditando = null;
   }
 
-  getNombreCategoria(id: number): string {
-    const cat = this.categorias.find(c => c.id === id);
-    return cat?.name || 'Sin categoría';
+  getNombreCategoria(id: number | string): string {
+    const cat = this.categorias.find(c => c.id == id);
+    return cat ? cat.name : 'Sin nombre';
   }
 
-  productosFiltrados(): Product[] {
-    let filtrados = this.productos;
-
-    if (this.terminoBusqueda.trim()) {
-      const termino = this.terminoBusqueda.toLowerCase();
-      filtrados = filtrados.filter(p =>
-        p.name.toLowerCase().includes(termino)
-      );
+  async removerProducto(producto: any): Promise<void> {
+    try {
+      await this.axiosService.eliminarProducto(producto.id);
+      await this.obtenerProductos();
+    } catch (error) {
+      console.error('Error al eliminar producto:', error);
+      this.mensajeError = 'Error al eliminar el producto.';
     }
-
-    if (this.categoriaFiltro) {
-      filtrados = filtrados.filter(
-        p => p.category_id === +this.categoriaFiltro
-      );
-    }
-
-    return filtrados;
-  }
-
-  productosFiltradosPaginados(): Product[] {
-    const inicio = (this.currentPage - 1) * this.itemsPerPage;
-    return this.productosFiltrados().slice(inicio, inicio + this.itemsPerPage);
-  }
-
-  cambiarPagina(delta: number): void {
-    const total = this.totalPaginas();
-    this.currentPage = Math.max(1, Math.min(this.currentPage + delta, total));
-  }
-
-  totalPaginas(): number {
-    return Math.ceil(this.productosFiltrados().length / this.itemsPerPage);
-  }
-
-  private mostrarExito(mensaje: string): void {
-    this.mensajeExito = mensaje;
-    setTimeout(() => this.mensajeExito = '', 2000);
-  }
-
-  private mostrarError(mensaje: string): void {
-    this.mensajeError = mensaje;
-    setTimeout(() => this.mensajeError = '', 2000);
   }
 }

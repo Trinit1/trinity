@@ -1,148 +1,106 @@
 <div class="container my-5">
-  <h2 class="text-center text-light mb-4">👤 GESTIÓN DE USUARIOS</h2>
-
-  <div class="mb-3">
-    <input
-      type="text"
-      class="form-control"
-      placeholder="🔍 BUSCAR POR NOMBRE, CORREO O ROL..."
-      [(ngModel)]="filtro"
-      name="filtro"
-    />
-  </div>
-
-  <div class="card bg-dark text-white mb-4 shadow">
-    <div class="card-body">
-      <form class="row g-3" (ngSubmit)="agregarUsuario()" #form="ngForm">
-        <div class="col-md-3">
-          <input type="text" class="form-control" [class.is-invalid]="!nuevoUsuario.nombre" placeholder="NOMBRE COMPLETO" required [(ngModel)]="nuevoUsuario.nombre" name="nombre" />
-        </div>
-        <div class="col-md-3">
-          <input type="email" class="form-control" [class.is-invalid]="!nuevoUsuario.email" placeholder="CORREO" required [(ngModel)]="nuevoUsuario.email" name="email" />
-        </div>
-        <div class="col-md-3">
-          <input type="password" class="form-control" [class.is-invalid]="!nuevoUsuario.password" placeholder="CLAVE" required [(ngModel)]="nuevoUsuario.password" name="password" />
-        </div>
-        <div class="col-md-2">
-          <select class="form-select" required [(ngModel)]="nuevoUsuario.rol" name="rol">
-            <option value="" disabled selected hidden>ROL</option>
-            <option *ngFor="let rol of rolesDisponibles" [value]="rol">{{ rol }}</option>
-          </select>
-        </div>
-        <div class="col-md-1 text-end">
-          <button type="submit" class="btn btn-info w-100 fw-bold" title="Agregar usuario">+</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <div class="table-responsive shadow-sm">
-    <table class="table table-dark table-bordered text-center align-middle">
-      <thead class="table-secondary text-dark">
-        <tr>
-          <th>#</th>
-          <th>NOMBRE</th>
-          <th>USUARIO</th>
-          <th>ROL</th>
-          <th>FECHA</th>
-          <th>HORA</th>
-          <th>ACCIONES</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let usuario of usuariosPaginados; let i = index">
-          <td>{{ (paginaActual - 1) * usuariosPorPagina + i + 1 }}</td>
-          <ng-container *ngIf="usuarioEditando?.id === usuario.id; else verUsuario">
-            <td><input [(ngModel)]="usuarioEditando!.nombre" name="editNombre{{ i }}" class="form-control" /></td>
-            <td><input [(ngModel)]="usuarioEditando!.email" name="editEmail{{ i }}" class="form-control" /></td>
-            <td>
-              <select [(ngModel)]="usuarioEditando!.rol" name="editRol{{ i }}" class="form-select">
-                <option *ngFor="let rol of rolesDisponibles" [value]="rol">{{ rol }}</option>
-              </select>
-            </td>
-            <td>{{ usuario.createdAt | date: 'yyyy-MM-dd' }}</td>
-            <td>{{ usuario.createdAt | date: 'hh:mm a' }}</td>
-            <td>
-              <button class="btn btn-success btn-sm me-1" (click)="guardarEdicion()" title="Guardar">💾</button>
-              <button class="btn btn-secondary btn-sm" (click)="cancelarEdicion()" title="Cancelar">✖️</button>
-            </td>
-          </ng-container>
-          <ng-template #verUsuario>
-            <td>{{ usuario.nombre }}</td>
-            <td>{{ usuario.email }}</td>
-            <td>{{ usuario.rol }}</td>
-            <td>{{ usuario.createdAt | date: 'yyyy-MM-dd' }}</td>
-            <td>{{ usuario.createdAt | date: 'hh:mm a' }}</td>
-            <td>
-              <button class="btn btn-sm btn-outline-warning me-1" (click)="iniciarEdicion(usuario)" title="Editar">✏️</button>
-              <button class="btn btn-sm btn-outline-danger" (click)="eliminarUsuario(usuario.id)" title="Eliminar">🗑️</button>
-            </td>
-          </ng-template>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="d-flex justify-content-between align-items-center mt-3 text-white">
-      <div>PÁGINA {{ paginaActual }} DE {{ totalPaginas }}</div>
-      <div>
-        <button class="btn btn-outline-light btn-sm me-1" (click)="cambiarPagina(paginaActual - 1)" [disabled]="paginaActual === 1">«</button>
-        <button class="btn btn-outline-light btn-sm" (click)="cambiarPagina(paginaActual + 1)" [disabled]="paginaActual === totalPaginas">»</button>
+    <h2 class="text-center mb-4">👤 Gestión de usuarios</h2>
+  
+    <!-- Formulario para agregar usuario o rol -->
+    <div class="card bg-dark text-white mb-4">
+      <div class="card-body">
+        <h5 class="card-title">➕ Agregar usuario / asignar rol</h5>
+        <form class="row g-3">
+          <div class="col-md-4">
+            <input type="text" class="form-control" placeholder="Nombre completo" required>
+          </div>
+          <div class="col-md-3">
+            <input type="text" class="form-control" placeholder="Nombre de usuario" required>
+          </div>
+          <div class="col-md-3">
+            <input type="password" class="form-control" placeholder="Clave de acceso" required>
+          </div>
+          <div class="col-md-2">
+            <select class="form-select" required>
+              <option selected disabled>Rol</option>
+              <option value="admin">Admin</option>
+              <option value="editor">Vendedor</option>
+              <option value="visualizador">Usuario</option>
+            </select>
+          </div>
+          <div class="col-12 text-end">
+            <button type="submit" class="btn btn-info text-white fw-bold">Agregar / Asignar</button>
+          </div>
+        </form>
       </div>
     </div>
-  </div>
-
-  <div class="card bg-dark text-white mt-5 shadow">
-    <div class="card-body">
-      <h2 class="text-center text-light mb-4">🚚 GESTIÓN DE PROVEEDORES</h2>
-
-      <form class="row g-3 mb-4" (ngSubmit)="agregarProveedor()">
-        <div class="col-md-4">
-          <input type="text" class="form-control" placeholder="NOMBRE DEL PROVEEDOR" required [(ngModel)]="nuevoProveedor.nombre" name="nombreProveedor" />
-        </div>
-        <div class="col-md-4">
-          <input type="email" class="form-control" placeholder="CORREO DEL PROVEEDOR" [(ngModel)]="nuevoProveedor.email" name="emailProveedor" />
-        </div>
-        <div class="col-md-3">
-          <input type="text" class="form-control" placeholder="TELÉFONO" [(ngModel)]="nuevoProveedor.telefono" name="telefonoProveedor" />
-        </div>
-        <div class="col-md-1 text-end">
-          <button type="submit" class="btn btn-success w-100 fw-bold" title="Agregar proveedor">+</button>
-        </div>
-      </form>
-
-      <div class="table-responsive">
-        <table class="table table-dark table-bordered text-center align-middle">
-          <thead class="table-secondary text-dark">
-            <tr>
-              <th>#</th>
-              <th>NOMBRE</th>
-              <th>CORREO</th>
-              <th>TELÉFONO</th>
-              <th>ACCIONES</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let proveedor of proveedoresPaginados(); let i = index">
-              <td>{{ (paginaProveedor - 1) * proveedoresPorPagina + i + 1 }}</td>
-              <td>{{ proveedor.nombre }}</td>
-              <td>{{ proveedor.email }}</td>
-              <td>{{ proveedor.telefono }}</td>
-              <td>
-                <button class="btn btn-sm btn-outline-warning me-1" (click)="editarProveedor(proveedor)" title="Editar">✏️</button>
-                <button class="btn btn-sm btn-outline-danger" (click)="eliminarProveedor(proveedor.id)" title="Eliminar">🗑️</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="d-flex justify-content-between align-items-center mt-3 text-white" *ngIf="totalPaginasProveedor > 1">
-        <div>PÁGINA {{ paginaProveedor }} DE {{ totalPaginasProveedor }}</div>
-        <div>
-          <button class="btn btn-outline-light btn-sm me-1" (click)="cambiarPaginaProveedor(paginaProveedor - 1)" [disabled]="paginaProveedor === 1">«</button>
-          <button class="btn btn-outline-light btn-sm" (click)="cambiarPaginaProveedor(paginaProveedor + 1)" [disabled]="paginaProveedor === totalPaginasProveedor">»</button>
-        </div>
-      </div>
+  
+    <!-- Lista de usuarios -->
+    <div class="table-responsive">
+      <table class="table table-dark table-bordered text-center align-middle">
+        <thead class="table-secondary text-dark">
+          <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Usuario</th>
+            <th>Clave de acceso</th>
+            <th>Rol</th>
+            <th>Fecha creación</th>
+            <th>Hora</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Usuario ejemplo -->
+          <tr>
+            <td>1</td>
+            <td>Laura Gómez</td>
+            <td>lgomez</td>
+            <td>••••••</td>
+            <td>Admin</td>
+            <td>2025-04-20</td>
+            <td>10:15 AM</td>
+            <td>
+              <button class="btn btn-sm btn-primary">Consultar</button>
+              <button class="btn btn-sm btn-warning">Editar</button>
+              <button class="btn btn-sm btn-danger">Eliminar</button>
+            </td>
+          </tr>
+          <!-- Repite usuarios ficticios -->
+          <tr>
+            <td>2</td>
+            <td>Carlos Ruiz</td>
+            <td>cruiz</td>
+            <td>••••••</td>
+            <td>Editor</td>
+            <td>2025-04-18</td>
+            <td>09:30 AM</td>
+            <td>
+              <button class="btn btn-sm btn-primary">Consultar</button>
+              <button class="btn btn-sm btn-warning">Editar</button>
+              <button class="btn btn-sm btn-danger">Eliminar</button>
+            </td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Jessica Torres</td>
+            <td>jtorres</td>
+            <td>••••••</td>
+            <td>Encargado</td>
+            <td>2025-04-17</td>
+            <td>11:10 AM</td>
+            <td>
+              <button class="btn btn-sm btn-primary">Consultar</button>
+              <button class="btn btn-sm btn-warning">Editar</button>
+              <button class="btn btn-sm btn-danger">Eliminar</button>
+            </td>
+          </tr>
+          <!-- Usuarios restantes (solo cambia nombre, usuario, rol y fecha/hora) -->
+          <tr><td>4</td><td>María Díaz</td><td>mdiaz</td><td>••••••</td><td>Vendedor</td><td>2025-04-16</td><td>12:00 PM</td><td><button class="btn btn-sm btn-primary">Consultar</button> <button class="btn btn-sm btn-warning">Editar</button> <button class="btn btn-sm btn-danger">Eliminar</button></td></tr>
+          <tr><td>5</td><td>José Martínez</td><td>jmartinez</td><td>••••••</td><td>Vendedor</td><td>2025-04-16</td><td>03:25 PM</td><td><button class="btn btn-sm btn-primary">Consultar</button> <button class="btn btn-sm btn-warning">Editar</button> <button class="btn btn-sm btn-danger">Eliminar</button></td></tr>
+          <tr><td>6</td><td>Lucía Herrera</td><td>lherrera</td><td>••••••</td><td>Vendedor</td><td>2025-04-15</td><td>08:45 AM</td><td><button class="btn btn-sm btn-primary">Consultar</button> <button class="btn btn-sm btn-warning">Editar</button> <button class="btn btn-sm btn-danger">Eliminar</button></td></tr>
+          <tr><td>7</td><td>Santiago Vera</td><td>svera</td><td>••••••</td><td>Vendedor</td><td>2025-04-15</td><td>02:10 PM</td><td><button class="btn btn-sm btn-primary">Consultar</button> <button class="btn btn-sm btn-warning">Editar</button> <button class="btn btn-sm btn-danger">Eliminar</button></td></tr>
+          <tr><td>8</td><td>Valeria Ríos</td><td>vrios</td><td>••••••</td><td>Admin</td><td>2025-04-14</td><td>04:20 PM</td><td><button class="btn btn-sm btn-primary">Consultar</button> <button class="btn btn-sm btn-warning">Editar</button> <button class="btn btn-sm btn-danger">Eliminar</button></td></tr>
+          <tr><td>9</td><td>Juan Camilo</td><td>jcamilo</td><td>••••••</td><td>Admin</td><td>2025-04-14</td><td>05:55 PM</td><td><button class="btn btn-sm btn-primary">Consultar</button> <button class="btn btn-sm btn-warning">Editar</button> <button class="btn btn-sm btn-danger">Eliminar</button></td></tr>
+          <tr><td>10</td><td>Andrea López</td><td>alopez</td><td>••••••</td><td>Vendedor</td><td>2025-04-13</td><td>07:00 PM</td><td><button class="btn btn-sm btn-primary">Consultar</button> <button class="btn btn-sm btn-warning">Editar</button> <button class="btn btn-sm btn-danger">Eliminar</button></td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
-</div>
+  
+  

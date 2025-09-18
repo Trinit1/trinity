@@ -1,70 +1,27 @@
-<section class="d-flex justify-content-center align-items-center min-vh-100 bg-dark">
-  <main>
-    <div class="card chart-card p-4 shadow-lg" style="width: 400px;">
-      <h2 class="text-center mb-4 text-white">Registro</h2>
+<section>
+    <main>
 
-      <form (ngSubmit)="onRegister()" #registerForm="ngForm" novalidate>
-        <div class="mb-3">
-          <label for="nombre" class="form-label text-white text-uppercase">Nombre completo</label>
-          <input
-            id="nombre"
-            type="text"
-            class="form-control bg-dark text-white"
-            [(ngModel)]="nombre"
-            name="nombre"
-            required />
+        <div class="card chart-card p-4 con" style="width: 400px;">
+          <h2 class="text-center mb-4">Registro</h2>
+          <form>
+            <div class="mb-3">
+              <label class="form-label text-white text-uppercase">Nombre completo</label>
+              <input type="text" class="form-control bg-dark text-white" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label text-white text-uppercase">Correo electrónico</label>
+              <input type="email" class="form-control bg-dark text-white" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label text-white text-uppercase">Contraseña</label>
+              <input type="password" class="form-control bg-dark text-white" required>
+            </div>
+            <button type="submit" class="btn btn-custom w-100 mt-2">Solicitar token</button>
+          </form>
+          <div class="text-center mt-3">
+            <small class="text-white">¿Ya tienes cuenta? <a routerLink="/login" class="text-info">Inicia sesión</a></small>
+          </div>
         </div>
+</main>
 
-        <div class="mb-3">
-          <label for="email" class="form-label text-white text-uppercase">Correo electrónico</label>
-          <input
-            id="email"
-            type="email"
-            class="form-control bg-dark text-white"
-            [(ngModel)]="email"
-            name="email"
-            required />
-        </div>
-
-        <div class="mb-3">
-          <label for="password" class="form-label text-white text-uppercase">Contraseña</label>
-          <input
-            id="password"
-            type="password"
-            class="form-control bg-dark text-white"
-            [(ngModel)]="password"
-            name="password"
-            required />
-        </div>
-
-        <div class="mb-3">
-          <label for="rol" class="form-label text-white text-uppercase">Rol</label>
-          <select
-            id="rol"
-            class="form-select bg-dark text-white"
-            [(ngModel)]="rol"
-            name="rol"
-            required>
-            <option value="" disabled selected>Seleccione un rol</option>
-            <option value="Admin">Admin</option>
-            <option value="Editor">Editor</option>
-            <option value="Vendedor">Vendedor</option>
-            <option value="Encargado">Encargado</option>
-          </select>
-        </div>
-
-        <button type="submit" class="btn btn-custom w-100 mt-2 fw-bold">
-          Registrarse
-        </button>
-      </form>
-
-      <div class="text-center mt-3">
-        <small class="text-white">
-          ¿Ya tienes cuenta?
-          <a routerLink="/login" class="text-info">Inicia sesión</a>
-        </small>
-      </div>
-    </div>
-  </main>
 </section>
-

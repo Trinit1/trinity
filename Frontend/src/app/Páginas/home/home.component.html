@@ -1,143 +1,52 @@
-<div class="container my-5">
-  <div class="text-center mb-5">
-    <h2 class="text-light">📊 BIENVENIDO A TU PANEL DE INVENTARIO</h2>
-    <p class="text-secondary">
-      Visualiza estadísticas clave, accede a productos y gestiona tus categorías.
-    </p>
-  </div>
-
-  <div class="row g-4 justify-content-center mb-5">
-    <div 
-      class="col-12 col-sm-6 col-md-4 col-lg-3" 
-      *ngFor="let categoria of categoriasPaginadas()"
-    >
-      <div class="card card-option h-100">
-        <img 
-          [src]="getRutaImagen(categoria)"
-          [alt]="categoria.name"
-          class="category-img"
-          (error)="reemplazarImagenPorDefecto(categoria)"
-        />
-        <div class="card-body">
-          <h5 class="card-title text-uppercase">{{ categoria.name }}</h5>
-          <p class="card-text small">
-            {{ categoria.description || 'Sin descripción' }}
-          </p>
-          <a 
-            [routerLink]="['/productos/categoria', categoria.id]" 
-            class="btn btn-outline-light btn-sm mt-2"
-          >
-            VER PRODUCTOS
-          </a>
+<div class="container my-4 content">
+  <div class="row justify-content-center g-4">
+    <div class="col-12 col-sm-6 col-md-3">
+      <a routerLink="/categories">
+        <div class="p-3 border rounded text-center card-option h-100">
+          <h2 class="h5 mb-3">Dispositivos móviles</h2>
+          <img src="/iphone.png" class="img-fluid">
         </div>
-      </div>
+      </a>
+    </div>
+    <div class="col-12 col-sm-6 col-md-3">
+      <a routerLink="/categories">
+        <div class="p-3 border rounded text-center card-option h-100">
+          <h2 class="h5 mb-3">Equipos de cómputo</h2>
+          <img src="/dComputo.png" class="img-fluid">
+        </div>
+      </a>
+    </div>
+    <div class="col-12 col-sm-6 col-md-3">
+      <a routerLink="/categories">
+        <div class="p-3 border rounded text-center card-option h-100">
+          <h2 class="h5 mb-3">Accesorios</h2>
+          <img src="/accesorios.jfif" class="img-fluid">
+        </div>
+      </a>
+    </div>
+    <div class="col-12 col-sm-6 col-md-3">
+      <a routerLink="/categories">
+        <div class="p-3 border rounded text-center card-option h-100">
+          <h2 class="h5 mb-3">Componentes</h2>
+          <img src="/componentes.jfif" class="img-fluid">
+        </div>
+      </a>
     </div>
   </div>
 
-  <div class="text-center mt-4" *ngIf="totalPaginas() > 1">
-    <button
-      *ngFor="let pagina of obtenerPaginas()"
-      (click)="cambiarPagina(pagina)"
-      [class.active]="pagina === currentPage"
-      class="btn btn-outline-light mx-1"
-    >
-      {{ pagina }}
-    </button>
+  <div class="alert alert-secondary mt-4" role="alert">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati nobis nesciunt recusandae reprehenderit earum, facilis beatae natus quibusdam tempore minima quia vitae, necessitatibus distinctio, et perferendis rem quas repellat vel?
   </div>
 
-  <div class="row g-4 text-center mb-5">
-    <div class="col-6 col-md-4">
-      <div 
-        class="bg-dark border border-success rounded p-3 shadow-sm"
-        style="cursor: pointer;"
-        [routerLink]="['/stock']"
-      >
-        <h6 class="text-secondary mb-1">📁 TOTAL CATEGORÍAS</h6>
-        <h3 class="text-light">{{ categorias.length || 0 }}</h3>
-      </div>
-    </div>
-
-    <div class="col-6 col-md-4">
-      <div 
-        class="bg-dark border border-info rounded p-3 shadow-sm"
-        style="cursor: pointer;"
-        [routerLink]="['/productos']"
-      >
-        <h6 class="text-secondary mb-1">🛒 TOTAL PRODUCTOS</h6>
-        <h3 class="text-light">{{ totalProductos || 0 }}</h3>
-      </div>
-    </div>
-
-    <div class="col-12 col-md-4">
-      <div class="bg-dark border border-warning rounded p-3 shadow-sm">
-        <h6 class="text-secondary mb-1">📅 ÚLTIMA ACTUALIZACIÓN</h6>
-        <h3 class="text-light">{{ resumen[0]?.ultima_actualizacion || 'N/A' }}</h3>
-      </div>
-    </div>
-  </div>
-
-  <div class="row justify-content-center mt-4 g-4">
+  <div class="row justify-content-center chart-section mt-4 g-4">
     <div class="col-12 col-md-6">
-      <div class="chart-card bg-dark border border-success text-white">
-        <h5 class="mb-3">📈 PRODUCTOS MÁS VENDIDOS</h5>
-        <div *ngIf="masVendidos.length; else sinMasVendidos">
-          <div *ngFor="let p of masVendidos" class="mb-3">
-            <div class="d-flex justify-content-between">
-              <strong>{{ p.nombre }}</strong>
-              <small>{{ p.vendidos }} unidades</small>
-            </div>
-            <div class="progress">
-              <div 
-                class="progress-bar bg-success"
-                role="progressbar"
-                [style.width.%]="(p.vendidos / maxVendidos) * 100"
-                [attr.aria-valuenow]="p.vendidos"
-                aria-valuemin="0"
-                [attr.aria-valuemax]="maxVendidos"
-              ></div>
-            </div>
-          </div>
-        </div>
-        <ng-template #sinMasVendidos>
-          <p class="text-secondary">No hay productos registrados aún.</p>
-        </ng-template>
+      <div class="p-3 border rounded bg-light text-center chart-card h-100">
+        <h3 class="h5 mb-3">Productos más vendidos</h3>
+        <img src="https://www.researchgate.net/profile/Miguel-Villasis-Keever/publication/322345711/figure/fig2/AS:581063608897536@1515547768460/Figura-3-Ejemplo-de-grafica-tipo-pastel-Distribucion-por-grupos-etarios-de-alergia-a.png" class="img-fluid" alt="Productos más vendidos">
       </div>
     </div>
-
     <div class="col-12 col-md-6">
-      <div class="chart-card bg-dark border border-danger text-white">
-        <h5 class="mb-3">📉 PRODUCTOS MENOS VENDIDOS</h5>
-        <div *ngIf="menosVendidos.length; else sinMenosVendidos">
-          <div *ngFor="let p of menosVendidos" class="mb-3">
-            <div class="d-flex justify-content-between">
-              <strong>{{ p.nombre }}</strong>
-              <small>{{ p.vendidos }} unidades</small>
-            </div>
-            <div class="progress">
-              <div 
-                class="progress-bar bg-danger"
-                role="progressbar"
-                [style.width.%]="(p.vendidos / maxVendidos) * 100"
-                [attr.aria-valuenow]="p.vendidos"
-                aria-valuemin="0"
-                [attr.aria-valuemax]="maxVendidos"
-              ></div>
-            </div>
-          </div>
-        </div>
-        <ng-template #sinMenosVendidos>
-          <p class="text-secondary">Todos los productos tienen cero ventas.</p>
-        </ng-template>
+      <div class="p-3 border rounded bg-light text-center chart-card h-100">
+        <h3 class="h5 mb-3">Productos menos vendidos</h3>
+        <img src="https://www.researchgate.net/profile/Miguel-Villasis-Keever/publication/322345711/figure/fig2/AS:581063608897536@1515547768460/Figura-3-Ejemplo-de-grafica-tipo-pastel-Distribucion-por-grupos-etarios-de-alergia-a.png" class="img-fluid" alt="Productos menos vendidos">
       </div>
-    </div>
-  </div>
-
-  <div *ngIf="alertasStockBajo?.length" class="alert alert-danger mt-5">
-    <h5 class="text-white">⚠ CATEGORÍAS CON STOCK BAJO:</h5>
-    <ul class="mb-0">
-      <li *ngFor="let cat of alertasStockBajo">
-        {{ cat.categoria }}: {{ cat.stock_total }} / mínimo {{ cat.stock_minimo }}
-      </li>
-    </ul>
-  </div>
-</div>
