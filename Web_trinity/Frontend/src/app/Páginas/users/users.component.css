@@ -1,0 +1,107 @@
+/* Tarjeta del formulario */
+.card.bg-dark {
+    background-color: #212529 !important;
+    border-radius: 12px;
+    border: 1px solid #343a40;
+    box-shadow: 0 0 10px purple;
+  }
+  
+  h2{
+    color: white;
+    text-transform: uppercase;
+  }
+  
+  /* Título del formulario */
+  .card-title {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: white;
+  }
+  
+  /* Inputs y selects */
+  form .form-control,
+  form .form-select {
+    background-color: #343a40;
+    color: white;
+    border: 1px solid #495057;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  form .form-control:focus,
+  form .form-select:focus {
+    background-color: #3c4147;
+    border-color: #0dcaf0;
+    box-shadow: 0 0 6px #0dcaf0;
+  }
+  
+  /* Botón de envío */
+  form button {
+    background-color: #0dcaf0;
+    border: none;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 0.5rem 1.5rem;
+  }
+  
+  form button:hover {
+    background-color: #0bb6da;
+    box-shadow: 0 0 10px #0dcaf0;
+    transition: 0.3s ease;
+    color: white;
+  }
+  
+  /* Tabla de usuarios */
+  .table-dark {
+    background-color: #212529;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .table-dark th,
+  .table-dark td {
+    vertical-align: middle;
+    font-size: 0.95rem;
+  }
+  
+  .table-secondary {
+    background-color: purple;
+    color: #212529;
+    text-transform: uppercase;
+  }
+  
+  /* Botones dentro de la tabla */
+  .table .btn {
+    font-size: 15px;
+    padding: 0.3rem 0.7rem;
+    text-transform: uppercase;
+    border-radius: 6px;
+    margin-inline: 10px;
+    background-color: black;
+    color: white;
+  }
+  
+  /* Responsive ajustes para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .card-title {
+      font-size: 1rem;
+    }
+  
+    .table th,
+    .table td {
+      font-size: 0.85rem;
+    }
+  }
+  
+  th {
+    background-color: purple;
+    color: white;
+    box-shadow: 0 0 10px purple;
+  }
+  
+  td {
+    color: white;
+    box-shadow: 0 0 10px purple;
+  }
+  

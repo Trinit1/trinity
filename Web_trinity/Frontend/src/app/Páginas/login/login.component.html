@@ -1,0 +1,27 @@
+<section>
+  <main>
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div id="login-form" class="card chart-card p-4">
+            <h2 class="text-center mb-4">Iniciar sesión</h2>
+            <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+              <div class="mb-3">
+                <label class="form-label text-white text-uppercase">Correo electrónico</label>
+                <input type="email" class="form-control bg-dark text-white" required [(ngModel)]="email" name="email">
+              </div>
+              <div class="mb-3">
+                <label class="form-label text-white text-uppercase">Contraseña</label>
+                <input type="password" class="form-control bg-dark text-white" required [(ngModel)]="password" name="password">
+              </div>
+              <button type="submit" class="btn btn-custom w-100 mt-2">Ingresar</button>
+            </form>
+            <div class="text-center mt-3">
+              <small class="text-white">¿No tienes cuenta? <a routerLink="/registro" class="text-info">Regístrate aquí</a></small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</section>

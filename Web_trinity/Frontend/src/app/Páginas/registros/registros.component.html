@@ -1,0 +1,61 @@
+<div class="container my-5">
+    <h2 class="text-center mb-4">📋 Registro de movimientos</h2>
+  
+    <form>
+      <div class="row g-3">
+        <!-- Tipo de movimiento -->
+        <div class="col-md-6">
+          <label for="movimiento" class="form-label">Movimiento</label>
+          <select class="form-select" id="movimiento" required>
+            <option selected disabled value="">Selecciona tipo de movimiento</option>
+            <option value="entrada">Entrada</option>
+            <option value="salida">Salida</option>
+            <option value="devolucion">Devolución</option>
+          </select>
+        </div>
+  
+        <!-- Producto -->
+        <div class="col-md-6">
+          <label for="producto" class="form-label">Nombre del producto</label>
+          <input type="text" class="form-control" id="producto" placeholder="Ej. Monitor LED 24''" required>
+        </div>
+  
+        <!-- Cantidad -->
+        <div class="col-md-6">
+          <label for="cantidad" class="form-label">Cantidad</label>
+          <input type="number" class="form-control" id="cantidad" placeholder="Ej. 10" required>
+        </div>
+  
+        <!-- Fecha -->
+        <div class="col-md-6">
+          <label for="fecha" class="form-label">Fecha</label>
+          <input type="date" class="form-control" id="fecha" required>
+        </div>
+  
+        <!-- Hora -->
+        <div class="col-md-6">
+          <label for="hora" class="form-label">Hora</label>
+          <input type="time" class="form-control" id="hora" required>
+        </div>
+  
+        <div class="col-md-12">
+          <label for="nota" class="form-label">Nota opcional</label>
+          <textarea class="form-control" id="nota" rows="3" placeholder="Ej. Observaciones, detalles de devolución, número de factura..."></textarea>
+        </div>
+  
+        <!-- Responsable -->
+        <div class="col-md-12">
+          <label for="responsable" class="form-label">Responsable</label>
+          <input type="text" class="form-control" id="responsable" placeholder="Nombre completo de quien realiza el movimiento" required>
+        </div>
+  
+        <!-- Botón -->
+        <div class="col-12 text-end mt-3">
+          <button type="submit" class="btn btn-success px-4">
+            ✅ Registrar movimiento
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  

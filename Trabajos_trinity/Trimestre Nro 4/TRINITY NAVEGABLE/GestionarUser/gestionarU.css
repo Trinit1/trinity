@@ -1,0 +1,151 @@
+* {
+    border-radius: 10px;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e0e0e0;
+    background: #173f35;
+    text-transform: uppercase;    justify-content: center;
+    text-align: center;
+}
+
+.nav-btn {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.menu :hover {
+    background-color: #173f35;
+font-size: 1.5em;
+border: solid black;
+border-radius: 10px;
+color: white;
+}
+
+.container {
+    margin: 30px;
+    background: #C4DAD2;
+    border: solid black;
+    margin: 20px;
+    margin: 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 80px;
+    background: #173f35;
+    border: solid black;
+    margin: 10px;
+    color: white;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    border: solid black;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    font-weight: bold;
+}
+
+.menu a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #000;
+    font-size: 20px;
+    padding: 20px;
+    margin-inline: 5px;
+    height: 20px;
+}
+
+.user-form {
+    display: flex;
+    font-size: 20px;
+    align-content: center;
+    height: auto;
+    width: auto;
+    justify-content: center;
+    gap: 10px;
+    flex: 1 1 1;
+    padding: 10px;
+    align-items: center;
+    margin: 10px;
+    text-align: left;
+    background: #173f35;
+    border: solid black;
+}
+
+.campos1, .campos2 {
+    justify-content: center;
+    margin: 10px;
+    align-content: center;
+    font-size: 25px;
+    padding: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+.content {
+    display:  flex;
+    flex-flow: column;
+    height: auto;
+    width: auto;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+    margin: 10px;
+}
+
+h2 {
+    font-size: 40px;
+    background: #173f35;
+    margin: 10px;
+    color: white;
+    padding: 10px;
+}
+
+label, input, select, option {
+    gap: 15px;
+    margin: 15px;
+
+}
+
+button {
+    font-size: 30px;
+    height: auto;
+    width: auto;
+    padding: 10px;
+
+}
+
+.container {
+    margin: 15px;
+    padding: 10px;
+    border: solid black;
+}
+
+.usuarios-section {
+    margin: 15px;
+    padding: 10px;
+}
+
+input {
+    width: 400px;
+    height: 20px;
+    font-size: 20px;
+    padding: 10px;
+}
+
+select {
+    font-size: 25px;
+    padding: 5px;
+    height: auto;
+    width: 400px;
+}

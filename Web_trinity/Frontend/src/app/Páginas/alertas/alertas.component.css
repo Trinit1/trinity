@@ -1,0 +1,80 @@
+main {
+    background-color: #212529;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+  
+  /* Títulos */
+  h2, h3 {
+    color: white;
+    text-transform: uppercase;
+  }
+  
+  /* Alerta base personalizada */
+  .alert {
+    background-color: #212529;
+    color: white;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px purple;
+    margin-bottom: 1rem;
+    padding: 1rem 1.25rem;
+    border-left: 5px solid;
+  }
+  
+  /* Alta prioridad */
+  .alert.border-danger {
+    border-color: red !important;
+    box-shadow: 0 4px 15px red;
+  }
+  
+  /* Media prioridad */
+  .alert.border-warning {
+    border-color: orange !important;
+    box-shadow: 0 4px 15px orange;
+  }
+  
+  /* Baja prioridad / general */
+  .alert.border-info {
+    border-color: cyan !important;
+    box-shadow: 0 4px 15px cyan;
+  }
+  
+  /* Responsivo */
+  @media (max-width: 576px) {
+    h2 {
+      font-size: 1.5rem;
+    }
+  
+    .alert {
+      font-size: 0.9rem;
+      padding: 0.8rem;
+    }
+  }
+  
+  .btn-custom {
+    background-color: purple;
+    color: white;
+    border: none;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px purple;
+  }
+  
+  .btn-custom:hover {
+    background-color: #9b59b6;
+    box-shadow: 0 6px 14px purple;
+  }
+  
+  .alert a.btn-sm {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    border: 1px solid white;
+    transition: all 0.2s ease;
+  }
+  
+  .alert a.btn-sm:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0 2px 8px white;
+  }
+  

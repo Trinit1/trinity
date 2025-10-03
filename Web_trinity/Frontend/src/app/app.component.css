@@ -1,0 +1,39 @@
+/* Animación suave al entrar */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+
+.nav-underline {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-underline::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: red;
+  transition: width 0.3s ease;
+  box-shadow: 0 4px 15px red;
+}
+
+.nav-underline:hover::after {
+  width: 100%;
+}
+
+/* Opcional: título con efecto al pasar el mouse */
+.tittle {
+  color: red !important;
+  transition: color 0.3s ease;
+}
+
+.footer {
+  background-color: red;
+  padding: 25px;
+  text-align: center;
+  font-size: 14px;
+  color: #ffffff;
+  margin-top: 15px;
+  text-transform: uppercase !important;
+}

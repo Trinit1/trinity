@@ -1,0 +1,9 @@
+.pie_pagina {
+    background-color: #f8f9fa;
+    padding: 410px;
+    text-align: center;
+    font-size: 14px;
+    color: red;
+    margin-top: 15px;
+    text-transform: uppercase !important;
+}
