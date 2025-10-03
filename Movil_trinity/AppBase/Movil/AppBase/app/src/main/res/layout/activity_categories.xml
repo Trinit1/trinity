@@ -10,7 +10,7 @@
             android:id="@+id/btnVolver"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Volver"
+            android:text="Volvera"
             android:onClick="volverPagina"
             android:layout_marginBottom="16dp" />
 
