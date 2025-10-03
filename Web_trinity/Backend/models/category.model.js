@@ -9,10 +9,12 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
+
     description: {
       type: DataTypes.STRING,
       allowNull: true
     },
+
     imageUrl: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -24,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
+    
     stock_minimo: {
       type: DataTypes.INTEGER,
       allowNull: false,

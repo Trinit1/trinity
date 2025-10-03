@@ -39,7 +39,7 @@ app.use('/api/salidas', require('./routes/salidas.routes'));
 app.use('/api/notifications', require('./routes/notification.routes'));
 
 // 🔄 Sincronización y servidor
-db.sequelize.sync({ alter: true })
+db.sequelize.authenticate()
   .then(() => {
     console.log('🔄 Tablas sincronizadas correctamente');
     app.listen(3000, () => {

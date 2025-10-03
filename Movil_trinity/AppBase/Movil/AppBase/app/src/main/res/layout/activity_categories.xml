@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:padding="16dp">
+
+    <!-- Botón para volver -->
+    <Button
+            android:id="@+id/btnVolver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Volvera"
+            android:onClick="volverPagina"
+            android:layout_marginBottom="16dp" />
+
+    <!-- Título -->
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lista de Categorías"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="16dp" />
+
+    <!-- SECCIÓN NUEVA: AGREGAR CATEGORÍA -->
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="AGREGAR NUEVA CATEGORÍA"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+    <!-- Input Nombre -->
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre de la categoría"
+            android:textStyle="bold" />
+
+    <EditText
+            android:id="@+id/etCategoriesName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:hint="Ej: Apple, Cómputo, etc." />
+
+    <!-- Input URL Imagen -->
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="URL de la imagen"
+            android:textStyle="bold" />
+
+    <EditText
+            android:id="@+id/etImageUrl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:hint="https://ejemplo.com/imagen.jpg"
+            android:inputType="textUri" />
+
+    <!-- TextArea Descripción -->
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Descripción"
+            android:textStyle="bold" />
+
+    <EditText
+            android:id="@+id/etDescription"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginBottom="16dp"
+            android:gravity="top"
+            android:hint="Describe la categoría..."
+            android:inputType="textMultiLine" />
+
+    <!-- Stock Mínimo -->
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stock Mínimo"
+            android:textStyle="bold" />
+
+    <EditText
+            android:id="@+id/etStockMinimo"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="16dp"
+            android:hint="Ej: 10"
+            android:inputType="number"
+            android:minHeight="55dp" />
+
+    <!-- Botón Agregar -->
+    <Button
+            android:id="@+id/btnAddCategories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Agregar categoría"
+            android:layout_marginBottom="24dp" />
+
+    <!-- Lista de categorías -->
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewCategories"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+</LinearLayout>
