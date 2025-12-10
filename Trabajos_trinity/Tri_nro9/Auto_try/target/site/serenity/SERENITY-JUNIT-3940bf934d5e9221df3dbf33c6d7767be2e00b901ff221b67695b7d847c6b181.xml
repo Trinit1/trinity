@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="1" name="Autenticacion en la pagina de inicio de sesion en Trinity" skipped="0" tests="1" time="15.69" timestamp="2025-12-02 07:23:56"><testcase name="Verificar la autenticacion exitosa en la pagina de Trinity"><failure message="&#13;&#10;Expected: is &lt;true&gt;&#13;&#10;     but: was &lt;false&gt;" type="java.lang.AssertionError">&#13;
+Expected: is &lt;true&gt;&#13;
+     but: was &lt;false&gt;</failure><system-err>&#13;
+Expected: is &lt;true&gt;&#13;
+     but: was &lt;false&gt;&#13;
+co.com.auto_try.stepsdefinitions.AutenStepInSesion.el_sistema_debe_permitir_el_acceso_y_mostrar_el_panel_de_administrador(AutenStepInSesion.java:29)&#13;
+✽.el sistema debe permitir el acceso y mostrar el panel de administrador(file:///C:/KV/sena/Trinity/Trabajos_trinity/Tri_nro9/Auto_try/src/test/resources/features/Auto_InSesion.feature:15)&#13;
+</system-err></testcase></testsuite>
