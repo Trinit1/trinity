@@ -1,0 +1,326 @@
+<html lang="en"><head>
+  <script type="module" src="/@vite/client"></script>
+
+  <meta charset="utf-8">
+  <title>Trinity</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" href="styles.css"><style ng-style-reused="">@import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css";
+
+
+
+.nav-underline[_ngcontent-ng-c2798679027] {
+  position: relative;
+  transition: color 0.3s ease;
+}
+.nav-underline[_ngcontent-ng-c2798679027]::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: red;
+  transition: width 0.3s ease;
+  box-shadow: 0 4px 15px red;
+}
+.nav-underline[_ngcontent-ng-c2798679027]:hover::after {
+  width: 100%;
+}
+.tittle[_ngcontent-ng-c2798679027] {
+  color: red !important;
+  transition: color 0.3s ease;
+}
+.footer[_ngcontent-ng-c2798679027] {
+  background-color: red;
+  padding: 25px;
+  text-align: center;
+  font-size: 14px;
+  color: #ffffff;
+  margin-top: 15px;
+  text-transform: uppercase !important;
+}
+/*# sourceMappingURL=/app.component.css.map */</style><style ng-style-reused="">
+
+.navbar-brand.title[_ngcontent-ng-c4043273123] {
+  letter-spacing: 2px;
+  font-size: 2rem;
+  color: white;
+  transition: color 0.3s;
+}
+.navbar-brand.title[_ngcontent-ng-c4043273123]:hover {
+  color: #A259FF !important;
+}
+.nav-link[_ngcontent-ng-c4043273123] {
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  transition: color 0.2s, background 0.2s;
+  border-radius: 0.25rem;
+}
+.nav-link.nav-underline[_ngcontent-ng-c4043273123] {
+  border-bottom: 2px solid transparent;
+}
+.nav-link.nav-underline[_ngcontent-ng-c4043273123]:hover, 
+.nav-link.active[_ngcontent-ng-c4043273123] {
+  color: #A259FF !important;
+  background: rgba(255, 191, 0, 0.1);
+  border-bottom: 2px solid #A259FF;
+}
+.nav-link.text-danger[_ngcontent-ng-c4043273123] {
+  font-weight: bold;
+  transition: background 0.2s, color 0.2s;
+  font-size: 15px;
+  white-space: nowrap;
+}
+.nav-link.text-danger[_ngcontent-ng-c4043273123]:hover {
+  background: rgba(220, 53, 69, 0.1);
+  color: A259FF !important;
+  border-bottom: 1px solid #A259FF;
+}
+.navbar[_ngcontent-ng-c4043273123] {
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 24px rgba(255, 255, 255, 0.15);
+}
+@media (min-width: 992px) {
+  .navbar-nav.mx-auto[_ngcontent-ng-c4043273123] {
+    justify-content: center;
+    width: 100%;
+    display: flex;
+  }
+}
+/*# sourceMappingURL=/header.component.css.map */</style><style ng-style-reused="">
+
+.pie_pagina[_ngcontent-ng-c3511040579] {
+  background-color: #f8f9fa;
+  padding: 410px;
+  text-align: center;
+  font-size: 14px;
+  color: red;
+  margin-top: 15px;
+  text-transform: uppercase !important;
+}
+/*# sourceMappingURL=/footer.component.css.map */</style><style>
+
+.card.chart-card[_ngcontent-ng-c2783529779] {
+  background-color: #212529;
+  color: white;
+  box-shadow: 0 4px 15px purple;
+  border-radius: 10px;
+}
+.card.chart-card[_ngcontent-ng-c2783529779]   h3[_ngcontent-ng-c2783529779] {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase;
+}
+.list-group-item[_ngcontent-ng-c2783529779] {
+  border: none;
+  border-bottom: 1px solid #444;
+}
+.list-group-item[_ngcontent-ng-c2783529779]:last-child {
+  border-bottom: none;
+}
+.card.chart-card[_ngcontent-ng-c2783529779] {
+  background-color: #212529;
+  color: white;
+  box-shadow: 0 4px 15px purple;
+  border-radius: 10px;
+}
+.btn-custom[_ngcontent-ng-c2783529779] {
+  background-color: purple;
+  color: white;
+  border: none;
+  text-transform: uppercase;
+  box-shadow: 0 4px 10px purple;
+}
+.btn-custom[_ngcontent-ng-c2783529779]:hover {
+  background-color: #9b59b6;
+  box-shadow: 0 6px 14px purple;
+}
+input.form-control[_ngcontent-ng-c2783529779] {
+  border: none;
+  box-shadow: inset 0 0 5px cyan;
+}
+main[_ngcontent-ng-c2783529779] {
+  background-color: #212529;
+}
+h2[_ngcontent-ng-c2783529779] {
+  color: white;
+  text-transform: uppercase;
+}
+.product-list.scroll-container[_ngcontent-ng-c2783529779] {
+  max-height: 600px;
+  overflow-y: auto;
+  border: 2px solid purple;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px purple;
+  background-color: #1a1d20;
+}
+.card-option[_ngcontent-ng-c2783529779] {
+  background-color: #212529;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px purple;
+}
+.card-option[_ngcontent-ng-c2783529779]:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px purple;
+}
+.btn[_ngcontent-ng-c2783529779] {
+  text-transform: uppercase;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+}
+.btn-success[_ngcontent-ng-c2783529779] {
+  background-color: white;
+}
+main[_ngcontent-ng-c2783529779] {
+  background-color: #212529;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.welcome-box[_ngcontent-ng-c2783529779] {
+  background-color: #1a1d20;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px purple;
+  color: white;
+  text-transform: uppercase;
+}
+h1[_ngcontent-ng-c2783529779] {
+  font-size: 2.5rem;
+  color: white;
+}
+.btn-custom[_ngcontent-ng-c2783529779] {
+  background-color: purple;
+  color: white;
+  border: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  box-shadow: 0 4px 10px purple;
+}
+.btn-custom[_ngcontent-ng-c2783529779]:hover {
+  background-color: #9b59b6;
+  box-shadow: 0 6px 14px purple;
+}
+.btn-outline-light[_ngcontent-ng-c2783529779] {
+  border: 2px solid white;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+}
+.btn-outline-light[_ngcontent-ng-c2783529779]:hover {
+  background-color: white;
+  color: #212529;
+}
+/*# sourceMappingURL=/login.component.css.map */</style><style>
+
+h2[_ngcontent-ng-c539894939], 
+h3[_ngcontent-ng-c539894939], 
+p[_ngcontent-ng-c539894939], 
+h4[_ngcontent-ng-c539894939] {
+  color: white;
+  text-transform: uppercase;
+}
+input.form-control[_ngcontent-ng-c539894939], 
+.form-select[_ngcontent-ng-c539894939] {
+  background-color: #2c2f33;
+  border: 1px solid purple;
+  color: white;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(128, 0, 128, 0.3);
+}
+input[_ngcontent-ng-c539894939]::placeholder {
+  color: #cccccc;
+}
+.btn-success[_ngcontent-ng-c539894939] {
+  background-color: cyan;
+  border: none;
+  color: purple;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 4px 10px purple;
+}
+.btn-secondary[_ngcontent-ng-c539894939] {
+  background-color: #888;
+  border: none;
+  color: white;
+  text-transform: uppercase;
+}
+.btn-sm[_ngcontent-ng-c539894939] {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 4px 10px;
+}
+.btn-warning[_ngcontent-ng-c539894939] {
+  background-color: gold;
+  color: black;
+  border: none;
+  box-shadow: 0 3px 6px rgba(255, 215, 0, 0.4);
+}
+.btn-danger[_ngcontent-ng-c539894939] {
+  background-color: crimson;
+  color: white;
+  border: none;
+  box-shadow: 0 3px 6px rgba(220, 20, 60, 0.4);
+}
+.btn-info[_ngcontent-ng-c539894939] {
+  background-color: #17a2b8;
+  border: none;
+  color: white;
+}
+.card-option[_ngcontent-ng-c539894939] {
+  background-color: #212529;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  height: 400px;
+  max-height: 400px;
+  box-shadow: 0 4px 15px purple;
+  border-radius: 12px;
+  padding: 1rem;
+}
+.card-option[_ngcontent-ng-c539894939]:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px purple;
+}
+.tabla[_ngcontent-ng-c539894939], 
+td[_ngcontent-ng-c539894939], 
+th[_ngcontent-ng-c539894939] {
+  box-shadow: 0 4px 15px purple;
+  border-color: #444;
+}
+a[_ngcontent-ng-c539894939] {
+  text-decoration: none;
+}
+.alert[_ngcontent-ng-c539894939] {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+form[_ngcontent-ng-c539894939]   .d-flex.gap-2[_ngcontent-ng-c539894939] {
+  gap: 0.5rem;
+}
+/*# sourceMappingURL=/stock.component.css.map */</style></head>
+<body style="background-color: #0A0A0A;"><!--nghm--><script type="text/javascript" id="ng-event-dispatch-contract">(()=>{function p(t,n,r,o,e,i,f,m){return{eventType:t,event:n,targetElement:r,eic:o,timeStamp:e,eia:i,eirp:f,eiack:m}}function u(t){let n=[],r=e=>{n.push(e)};return{c:t,q:n,et:[],etc:[],d:r,h:e=>{r(p(e.type,e,e.target,t,Date.now()))}}}function s(t,n,r){for(let o=0;o<n.length;o++){let e=n[o];(r?t.etc:t.et).push(e),t.c.addEventListener(e,t.h,r)}}function c(t,n,r,o,e=window){let i=u(t);e._ejsas||(e._ejsas={}),e._ejsas[n]=i,s(i,r),s(i,o,!0)}window.__jsaction_bootstrap=c;})();
+</script><script>window.__jsaction_bootstrap(document.body,"ng",["click","submit","input","compositionstart","compositionend"],["blur"]);</script>
+  <app-root ng-version="19.2.7" _nghost-ng-c2798679027="" ng-server-context="ssg"><app-header _ngcontent-ng-c2798679027="" _nghost-ng-c4043273123=""><header _ngcontent-ng-c4043273123="" class="navbar navbar-expand-lg navbar-dark bg-dark shadow px-4 py-3 animate__animated animate__fadeInDown"><a _ngcontent-ng-c4043273123="" routerlink="/dashboard" class="navbar-brand fs-3 fw-bold me-4 title" ng-reflect-router-link="/dashboard" href="/dashboard">TRINITY</a><button _ngcontent-ng-c4043273123="" type="button" data-bs-toggle="collapse" data-bs-target="#navContent" aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span _ngcontent-ng-c4043273123="" class="navbar-toggler-icon"></span></button><div _ngcontent-ng-c4043273123="" id="navContent" class="collapse navbar-collapse justify-content-center"><ul _ngcontent-ng-c4043273123="" class="navbar-nav mx-auto mb-2 mb-lg-0 gap-2"><li _ngcontent-ng-c4043273123="" class="nav-item"><a _ngcontent-ng-c4043273123="" routerlink="/home" class="nav-link nav-underline" ng-reflect-router-link="/home" href="/home">Home</a></li><li _ngcontent-ng-c4043273123="" class="nav-item"><a _ngcontent-ng-c4043273123="" routerlink="/stock" class="nav-link nav-underline" ng-reflect-router-link="/stock" href="/stock">Stock</a></li><li _ngcontent-ng-c4043273123="" class="nav-item"><a _ngcontent-ng-c4043273123="" routerlink="/registros" class="nav-link nav-underline" ng-reflect-router-link="/registros" href="/registros">Registros</a></li><li _ngcontent-ng-c4043273123="" class="nav-item"><a _ngcontent-ng-c4043273123="" routerlink="/users" class="nav-link nav-underline" ng-reflect-router-link="/users" href="/users">Usuarios</a></li><li _ngcontent-ng-c4043273123="" class="nav-item"><a _ngcontent-ng-c4043273123="" routerlink="/alertas" class="nav-link nav-underline" ng-reflect-router-link="/alertas" href="/alertas">Alertas</a></li></ul><ul _ngcontent-ng-c4043273123="" class="navbar-nav mb-2 mb-lg-0"><li _ngcontent-ng-c4043273123="" class="nav-item text-white me-3"> Bienvenido, Keving </li><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><li _ngcontent-ng-c4043273123="" class="nav-item"><a _ngcontent-ng-c4043273123="" class="nav-link nav-underline text-danger" style="cursor: pointer;">Cerrar sesión</a></li><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></ul></div></header></app-header><section _ngcontent-ng-c2798679027="" class="content"><router-outlet _ngcontent-ng-c2798679027=""></router-outlet><app-stock _nghost-ng-c539894939=""><div _ngcontent-ng-c539894939="" class="container my-5"><h2 _ngcontent-ng-c539894939="" class="mb-4 text-center">📦 Stock General</h2><form _ngcontent-ng-c539894939="" novalidate="" class="row g-3 mb-4 ng-dirty ng-touched ng-submitted ng-invalid"><div _ngcontent-ng-c539894939="" class="col-md-3"><input _ngcontent-ng-c539894939="" type="text" placeholder="Nombre de la categoría" name="nombreCategoria" required="" class="form-control ng-dirty ng-touched ng-invalid" ng-reflect-required="" ng-reflect-name="nombreCategoria" ng-reflect-model=""></div><div _ngcontent-ng-c539894939="" class="col-md-4"><input _ngcontent-ng-c539894939="" type="text" placeholder="URL de la imagen" name="imagenCategoria" class="form-control ng-valid ng-dirty ng-touched" ng-reflect-name="imagenCategoria" ng-reflect-model=""></div><div _ngcontent-ng-c539894939="" class="col-md-3"><input _ngcontent-ng-c539894939="" type="text" placeholder="Descripción" name="descripcionCategoria" required="" class="form-control ng-dirty ng-touched ng-invalid" ng-reflect-required="" ng-reflect-name="descripcionCategoria" ng-reflect-model=""></div><div _ngcontent-ng-c539894939="" class="col-md-2 d-flex gap-2"><button _ngcontent-ng-c539894939="" type="submit" class="btn btn-success w-100"> Agregar categoría </button><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div></form><div _ngcontent-ng-c539894939="" class="alert alert-success text-center py-2"> ¡Categoría actualizada correctamente! </div><!--bindings={
+  "ng-reflect-ng-if": "¡Categoría actualizada correct"
+}--><!--bindings={
+  "ng-reflect-ng-if": ""
+}--><div _ngcontent-ng-c539894939="" class="row g-4 justify-content-center"><div _ngcontent-ng-c539894939="" class="col-12 col-sm-6 col-lg-3"><div _ngcontent-ng-c539894939="" class="p-3 border rounded bg-dark text-center card-option"><h3 _ngcontent-ng-c539894939="" class="h5 mb-3">Motorola AutoEditado</h3><a _ngcontent-ng-c539894939="" ng-reflect-router-link="/productos/categoria,2" href="/productos/categoria/2"><img _ngcontent-ng-c539894939="" class="img-fluid" style="cursor: pointer;" src="/generico.png" alt="Imagen de Motorola AutoEditado"></a><p _ngcontent-ng-c539894939="" class="mt-2">Total: <strong _ngcontent-ng-c539894939="">15</strong></p><div _ngcontent-ng-c539894939="" class="mt-3 d-flex justify-content-center gap-2"><button _ngcontent-ng-c539894939="" class="btn btn-warning btn-sm"> 📝 Editar </button><button _ngcontent-ng-c539894939="" class="btn btn-danger btn-sm"> 🗑️ Eliminar </button></div></div></div><div _ngcontent-ng-c539894939="" class="col-12 col-sm-6 col-lg-3"><div _ngcontent-ng-c539894939="" class="p-3 border rounded bg-dark text-center card-option"><h3 _ngcontent-ng-c539894939="" class="h5 mb-3">COMPONENTES</h3><a _ngcontent-ng-c539894939="" ng-reflect-router-link="/productos/categoria,3" href="/productos/categoria/3"><img _ngcontent-ng-c539894939="" class="img-fluid" style="cursor: pointer;" src="/componentes.jfif" alt="Imagen de COMPONENTES"></a><p _ngcontent-ng-c539894939="" class="mt-2">Total: <strong _ngcontent-ng-c539894939="">14</strong></p><div _ngcontent-ng-c539894939="" class="mt-3 d-flex justify-content-center gap-2"><button _ngcontent-ng-c539894939="" class="btn btn-warning btn-sm"> 📝 Editar </button><button _ngcontent-ng-c539894939="" class="btn btn-danger btn-sm"> 🗑️ Eliminar </button></div></div></div><div _ngcontent-ng-c539894939="" class="col-12 col-sm-6 col-lg-3"><div _ngcontent-ng-c539894939="" class="p-3 border rounded bg-dark text-center card-option"><h3 _ngcontent-ng-c539894939="" class="h5 mb-3">HP</h3><a _ngcontent-ng-c539894939="" ng-reflect-router-link="/productos/categoria,6" href="/productos/categoria/6"><img _ngcontent-ng-c539894939="" class="img-fluid" style="cursor: pointer;" src="/generico.png" alt="Imagen de HP"></a><p _ngcontent-ng-c539894939="" class="mt-2">Total: <strong _ngcontent-ng-c539894939="">12</strong></p><div _ngcontent-ng-c539894939="" class="mt-3 d-flex justify-content-center gap-2"><button _ngcontent-ng-c539894939="" class="btn btn-warning btn-sm"> 📝 Editar </button><button _ngcontent-ng-c539894939="" class="btn btn-danger btn-sm"> 🗑️ Eliminar </button></div></div></div><div _ngcontent-ng-c539894939="" class="col-12 col-sm-6 col-lg-3"><div _ngcontent-ng-c539894939="" class="p-3 border rounded bg-dark text-center card-option"><h3 _ngcontent-ng-c539894939="" class="h5 mb-3">Samsung</h3><a _ngcontent-ng-c539894939="" ng-reflect-router-link="/productos/categoria,13" href="/productos/categoria/13"><img _ngcontent-ng-c539894939="" class="img-fluid" style="cursor: pointer;" src="/generico.png" alt="Imagen de Samsung"></a><p _ngcontent-ng-c539894939="" class="mt-2">Total: <strong _ngcontent-ng-c539894939="">0</strong></p><div _ngcontent-ng-c539894939="" class="mt-3 d-flex justify-content-center gap-2"><button _ngcontent-ng-c539894939="" class="btn btn-warning btn-sm"> 📝 Editar </button><button _ngcontent-ng-c539894939="" class="btn btn-danger btn-sm"> 🗑️ Eliminar </button></div></div></div><div _ngcontent-ng-c539894939="" class="col-12 col-sm-6 col-lg-3"><div _ngcontent-ng-c539894939="" class="p-3 border rounded bg-dark text-center card-option"><h3 _ngcontent-ng-c539894939="" class="h5 mb-3">Relojes</h3><a _ngcontent-ng-c539894939="" ng-reflect-router-link="/productos/categoria,15" href="/productos/categoria/15"><img _ngcontent-ng-c539894939="" class="img-fluid" style="cursor: pointer;" src="/generico.png" alt="Imagen de Relojes"></a><p _ngcontent-ng-c539894939="" class="mt-2">Total: <strong _ngcontent-ng-c539894939="">0</strong></p><div _ngcontent-ng-c539894939="" class="mt-3 d-flex justify-content-center gap-2"><button _ngcontent-ng-c539894939="" class="btn btn-warning btn-sm"> 📝 Editar </button><button _ngcontent-ng-c539894939="" class="btn btn-danger btn-sm"> 🗑️ Eliminar </button></div></div></div><div _ngcontent-ng-c539894939="" class="col-12 col-sm-6 col-lg-3"><div _ngcontent-ng-c539894939="" class="p-3 border rounded bg-dark text-center card-option"><h3 _ngcontent-ng-c539894939="" class="h5 mb-3">Apple</h3><a _ngcontent-ng-c539894939="" ng-reflect-router-link="/productos/categoria,17" href="/productos/categoria/17"><img _ngcontent-ng-c539894939="" class="img-fluid" style="cursor: pointer;" src="/iphone.png" alt="Imagen de Apple"></a><p _ngcontent-ng-c539894939="" class="mt-2">Total: <strong _ngcontent-ng-c539894939="">0</strong></p><div _ngcontent-ng-c539894939="" class="mt-3 d-flex justify-content-center gap-2"><button _ngcontent-ng-c539894939="" class="btn btn-warning btn-sm"> 📝 Editar </button><button _ngcontent-ng-c539894939="" class="btn btn-danger btn-sm"> 🗑️ Eliminar </button></div></div></div><div _ngcontent-ng-c539894939="" class="col-12 col-sm-6 col-lg-3"><div _ngcontent-ng-c539894939="" class="p-3 border rounded bg-dark text-center card-option"><h3 _ngcontent-ng-c539894939="" class="h5 mb-3">Lacteos</h3><a _ngcontent-ng-c539894939="" ng-reflect-router-link="/productos/categoria,18" href="/productos/categoria/18"><img _ngcontent-ng-c539894939="" class="img-fluid" style="cursor: pointer;" src="/generico.png" alt="Imagen de Lacteos"></a><p _ngcontent-ng-c539894939="" class="mt-2">Total: <strong _ngcontent-ng-c539894939="">0</strong></p><div _ngcontent-ng-c539894939="" class="mt-3 d-flex justify-content-center gap-2"><button _ngcontent-ng-c539894939="" class="btn btn-warning btn-sm"> 📝 Editar </button><button _ngcontent-ng-c539894939="" class="btn btn-danger btn-sm"> 🗑️ Eliminar </button></div></div></div><div _ngcontent-ng-c539894939="" class="col-12 col-sm-6 col-lg-3"><div _ngcontent-ng-c539894939="" class="p-3 border rounded bg-dark text-center card-option"><h3 _ngcontent-ng-c539894939="" class="h5 mb-3">Celular</h3><a _ngcontent-ng-c539894939="" ng-reflect-router-link="/productos/categoria,19" href="/productos/categoria/19"><img _ngcontent-ng-c539894939="" class="img-fluid" style="cursor: pointer;" src="/generico.png" alt="Imagen de Celular"></a><p _ngcontent-ng-c539894939="" class="mt-2">Total: <strong _ngcontent-ng-c539894939="">0</strong></p><div _ngcontent-ng-c539894939="" class="mt-3 d-flex justify-content-center gap-2"><button _ngcontent-ng-c539894939="" class="btn btn-warning btn-sm"> 📝 Editar </button><button _ngcontent-ng-c539894939="" class="btn btn-danger btn-sm"> 🗑️ Eliminar </button></div></div></div><div _ngcontent-ng-c539894939="" class="col-12 col-sm-6 col-lg-3"><div _ngcontent-ng-c539894939="" class="p-3 border rounded bg-dark text-center card-option"><h3 _ngcontent-ng-c539894939="" class="h5 mb-3">Accesorios</h3><a _ngcontent-ng-c539894939="" ng-reflect-router-link="/productos/categoria,32" href="/productos/categoria/32"><img _ngcontent-ng-c539894939="" class="img-fluid" style="cursor: pointer;" src="/accesorios.jfif" alt="Imagen de Accesorios"></a><p _ngcontent-ng-c539894939="" class="mt-2">Total: <strong _ngcontent-ng-c539894939="">0</strong></p><div _ngcontent-ng-c539894939="" class="mt-3 d-flex justify-content-center gap-2"><button _ngcontent-ng-c539894939="" class="btn btn-warning btn-sm"> 📝 Editar </button><button _ngcontent-ng-c539894939="" class="btn btn-danger btn-sm"> 🗑️ Eliminar </button></div></div></div><div _ngcontent-ng-c539894939="" class="col-12 col-sm-6 col-lg-3"><div _ngcontent-ng-c539894939="" class="p-3 border rounded bg-dark text-center card-option"><h3 _ngcontent-ng-c539894939="" class="h5 mb-3">Motorola G 35 5G</h3><a _ngcontent-ng-c539894939="" ng-reflect-router-link="/productos/categoria,38" href="/productos/categoria/38"><img _ngcontent-ng-c539894939="" class="img-fluid" style="cursor: pointer;" src="/generico.png" alt="Imagen de Motorola G 35 5G"></a><p _ngcontent-ng-c539894939="" class="mt-2">Total: <strong _ngcontent-ng-c539894939="">0</strong></p><div _ngcontent-ng-c539894939="" class="mt-3 d-flex justify-content-center gap-2"><button _ngcontent-ng-c539894939="" class="btn btn-warning btn-sm"> 📝 Editar </button><button _ngcontent-ng-c539894939="" class="btn btn-danger btn-sm"> 🗑️ Eliminar </button></div></div></div><!--bindings={
+  "ng-reflect-ng-for-of": "[object Object],[object Object"
+}--></div><div _ngcontent-ng-c539894939="" class="mt-5"><h4 _ngcontent-ng-c539894939="" class="text-center mb-3">📊 Resumen general</h4><div _ngcontent-ng-c539894939="" class="table-responsive"><table _ngcontent-ng-c539894939="" class="table table-dark table-striped table-bordered text-center tabla"><thead _ngcontent-ng-c539894939=""><tr _ngcontent-ng-c539894939=""><th _ngcontent-ng-c539894939="">Categoría</th><th _ngcontent-ng-c539894939="">Disponible</th><th _ngcontent-ng-c539894939="">Stock mínimo</th><th _ngcontent-ng-c539894939="">Última actualización</th></tr></thead><tbody _ngcontent-ng-c539894939=""><tr _ngcontent-ng-c539894939=""><td _ngcontent-ng-c539894939="">Motorola AutoEditado</td><td _ngcontent-ng-c539894939="">15</td><td _ngcontent-ng-c539894939="">33</td><td _ngcontent-ng-c539894939="">2025-06-30</td></tr><tr _ngcontent-ng-c539894939=""><td _ngcontent-ng-c539894939="">COMPONENTES</td><td _ngcontent-ng-c539894939="">14</td><td _ngcontent-ng-c539894939="">30</td><td _ngcontent-ng-c539894939="">2025-07-02</td></tr><tr _ngcontent-ng-c539894939=""><td _ngcontent-ng-c539894939="">HP</td><td _ngcontent-ng-c539894939="">12</td><td _ngcontent-ng-c539894939="">30</td><td _ngcontent-ng-c539894939="">2025-07-01</td></tr><tr _ngcontent-ng-c539894939=""><td _ngcontent-ng-c539894939="">Samsung</td><td _ngcontent-ng-c539894939="">0</td><td _ngcontent-ng-c539894939="">50</td><td _ngcontent-ng-c539894939="">Sin datos</td></tr><tr _ngcontent-ng-c539894939=""><td _ngcontent-ng-c539894939="">Relojes</td><td _ngcontent-ng-c539894939="">0</td><td _ngcontent-ng-c539894939="">27</td><td _ngcontent-ng-c539894939="">Sin datos</td></tr><tr _ngcontent-ng-c539894939=""><td _ngcontent-ng-c539894939="">Apple</td><td _ngcontent-ng-c539894939="">0</td><td _ngcontent-ng-c539894939="">36</td><td _ngcontent-ng-c539894939="">Sin datos</td></tr><tr _ngcontent-ng-c539894939=""><td _ngcontent-ng-c539894939="">Lacteos</td><td _ngcontent-ng-c539894939="">0</td><td _ngcontent-ng-c539894939="">25</td><td _ngcontent-ng-c539894939="">Sin datos</td></tr><tr _ngcontent-ng-c539894939=""><td _ngcontent-ng-c539894939="">Celular</td><td _ngcontent-ng-c539894939="">0</td><td _ngcontent-ng-c539894939="">25</td><td _ngcontent-ng-c539894939="">Sin datos</td></tr><tr _ngcontent-ng-c539894939=""><td _ngcontent-ng-c539894939="">Accesorios</td><td _ngcontent-ng-c539894939="">0</td><td _ngcontent-ng-c539894939="">30</td><td _ngcontent-ng-c539894939="">Sin datos</td></tr><tr _ngcontent-ng-c539894939=""><td _ngcontent-ng-c539894939="">Motorola G 35 5G</td><td _ngcontent-ng-c539894939="">0</td><td _ngcontent-ng-c539894939="">30</td><td _ngcontent-ng-c539894939="">Sin datos</td></tr><!--bindings={
+  "ng-reflect-ng-for-of": "[object Object],[object Object"
+}--></tbody></table></div></div></div></app-stock><!--container--></section><app-footer _ngcontent-ng-c2798679027="" _nghost-ng-c3511040579=""><footer _ngcontent-ng-c3511040579="" class="bg-dark text-white text-center py-3 pie_pagina"> © 2025 TRINITY - [Todos los derechos reservados.]
+</footer></app-footer></app-root>
+<script src="polyfills.js" type="module"></script><script src="scripts.js" defer=""></script><script src="main.js" type="module"></script>
+
+<script id="ng-state" type="application/json">{"__nghData__":[{"t":{"23":"t0","24":"t1","25":"t2"},"c":{"23":[],"24":[],"25":[{"i":"t2","r":1}]}},{},{"c":{"2":[{"i":"c2783529779","r":1}]}}]}</script></body></html>
