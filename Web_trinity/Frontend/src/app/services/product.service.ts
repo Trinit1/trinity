@@ -1,14 +1,20 @@
-import { HttpClient } from '@angular/common/http';
+// services/product.service.ts - CORREGIDO
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { HttpClientModule } from '@angular/common/http';
 
 export interface Product {
   id?: number;
   name: string;
-  quantity: number;
+  quantity: number;  // Esto podría ser stock
+  stock?: number;    // Agrega esta propiedad
   category_id: number;
   imageUrl?: string;
+  // Otras propiedades que pueda tener tu producto
+  description?: string;
+  price?: number;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 @Injectable({
