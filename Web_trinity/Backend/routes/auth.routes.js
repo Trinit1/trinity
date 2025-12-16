@@ -131,4 +131,97 @@ router.get('/users', async (req, res) => {
   }
 });
 
+// ✅ Actualizar usuario
+router.put('/users/:id', async (req, res) => {
+  console.log(`PUT /api/users/${req.params.id} solicitado`, req.body);
+  
+  const { id } = req.params;
+  const { nombre, email, rol } = req.body;
+
+  if (!nombre && !email && !rol) {
+    return res.status(400).json({ mensaje: 'Debe enviar al menos un campo para actualizar' });
+  }
+
+  try {
+    const usuario = await User.findByPk(id);
+    if (!usuario) {
+      return res.status(404).json({ 
+        mensaje: `Usuario con ID ${id} no encontrado`,
+        id: id
+      });
+    }
+
+    // Actualizar solo los campos enviados
+    if (nombre !== undefined) usuario.nombre = nombre;
+    if (email !== undefined) usuario.email = email;
+    if (rol !== undefined) usuario.rol = rol;
+
+    await usuario.save();
+
+    return res.json({
+      mensaje: 'Usuario actualizado correctamente',
+      usuario: {
+        id: usuario.id,
+        nombre: usuario.nombre,
+        email: usuario.email,
+        rol: usuario.rol,
+        updatedAt: usuario.updatedAt
+      }
+    });
+  } catch (error) {
+    console.error(`Error en PUT /users/${id}:`, error);
+    return res.status(500).json({ 
+      mensaje: 'Error interno al actualizar el usuario',
+      error: error.message 
+    });
+  }
+});
+
+// ✅ Eliminar usuario (ROUTA CRÍTICA QUE TE FALTA)
+router.delete('/users/:id', async (req, res) => {
+  console.log(`DELETE /api/users/${req.params.id} solicitado - ID: ${req.params.id}`);
+  
+  const { id } = req.params;
+
+  try {
+    const usuario = await User.findByPk(id);
+    if (!usuario) {
+      console.log(`Usuario ID ${id} no encontrado en DB`);
+      return res.status(404).json({ 
+        mensaje: `Usuario con ID ${id} no encontrado`,
+        id: id,
+        timestamp: new Date().toISOString()
+      });
+    }
+    
+    console.log(`Usuario encontrado: ${usuario.nombre} (${usuario.email})`);
+    
+    // Verificar si es el último admin (protección opcional)
+    if (usuario.rol === 'admin') {
+      const adminCount = await User.count({ where: { rol: 'admin' } });
+      if (adminCount <= 1) {
+        return res.status(400).json({ 
+          mensaje: 'No se puede eliminar el único administrador del sistema',
+          id: id
+        });
+      }
+    }
+    
+    await usuario.destroy();
+    
+    return res.json({ 
+      mensaje: `Usuario ${usuario.nombre} eliminado correctamente`,
+      id: id,
+      nombre: usuario.nombre,
+      email: usuario.email
+    });
+  } catch (error) {
+    console.error(`Error en DELETE /users/${id}:`, error);
+    return res.status(500).json({ 
+      mensaje: 'Error interno al eliminar el usuario',
+      error: error.message 
+    });
+  }
+});
+
 module.exports = router;

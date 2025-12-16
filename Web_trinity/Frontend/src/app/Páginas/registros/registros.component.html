@@ -1,61 +1,168 @@
 <div class="container my-5">
-    <h2 class="text-center mb-4">📋 Registro de movimientos</h2>
-  
-    <form>
-      <div class="row g-3">
-        <!-- Tipo de movimiento -->
-        <div class="col-md-6">
-          <label for="movimiento" class="form-label">Movimiento</label>
-          <select class="form-select" id="movimiento" required>
-            <option selected disabled value="">Selecciona tipo de movimiento</option>
-            <option value="entrada">Entrada</option>
-            <option value="salida">Salida</option>
-            <option value="devolucion">Devolución</option>
-          </select>
-        </div>
-  
-        <!-- Producto -->
-        <div class="col-md-6">
-          <label for="producto" class="form-label">Nombre del producto</label>
-          <input type="text" class="form-control" id="producto" placeholder="Ej. Monitor LED 24''" required>
-        </div>
-  
-        <!-- Cantidad -->
-        <div class="col-md-6">
-          <label for="cantidad" class="form-label">Cantidad</label>
-          <input type="number" class="form-control" id="cantidad" placeholder="Ej. 10" required>
-        </div>
-  
-        <!-- Fecha -->
-        <div class="col-md-6">
-          <label for="fecha" class="form-label">Fecha</label>
-          <input type="date" class="form-control" id="fecha" required>
-        </div>
-  
-        <!-- Hora -->
-        <div class="col-md-6">
-          <label for="hora" class="form-label">Hora</label>
-          <input type="time" class="form-control" id="hora" required>
-        </div>
-  
-        <div class="col-md-12">
-          <label for="nota" class="form-label">Nota opcional</label>
-          <textarea class="form-control" id="nota" rows="3" placeholder="Ej. Observaciones, detalles de devolución, número de factura..."></textarea>
-        </div>
-  
-        <!-- Responsable -->
-        <div class="col-md-12">
-          <label for="responsable" class="form-label">Responsable</label>
-          <input type="text" class="form-control" id="responsable" placeholder="Nombre completo de quien realiza el movimiento" required>
-        </div>
-  
-        <!-- Botón -->
-        <div class="col-12 text-end mt-3">
-          <button type="submit" class="btn btn-success px-4">
-            ✅ Registrar movimiento
-          </button>
-        </div>
-      </div>
-    </form>
+  <h2 class="text-center mb-4">📋 Registro de movimientos</h2>
+
+  <!-- Mensaje de error -->
+  <div *ngIf="errorMensaje" class="alert alert-warning">
+    {{ errorMensaje }}
   </div>
+
+  <!-- Formulario -->
+  <form (ngSubmit)="onSubmit()" #movimientoForm="ngForm">
+    <div class="row g-3">
+      
+      <!-- Tipo de movimiento -->
+      <div class="col-md-6">
+        <label for="tipo_movimiento" class="form-label">Movimiento *</label>
+        <select class="form-select" id="tipo_movimiento" 
+                [(ngModel)]="movimiento.tipo_movimiento" name="tipo_movimiento" required>
+          <option value="" disabled selected>Selecciona tipo de movimiento</option>
+          <option value="entrada">Entrada</option>
+          <option value="salida">Salida</option>
+          <option value="devolucion">Devolución</option>
+        </select>
+      </div>
+
+<!-- PRODUCTO: Selector de productos existentes -->
+<div class="col-md-6">
+  <label for="producto_id" class="form-label">Producto *</label>
   
+  <select class="form-select" id="producto_id" 
+          [(ngModel)]="productoSeleccionadoId" name="producto_id" required
+          (change)="onProductoSeleccionado($event)">
+    
+    <option value="" disabled selected>Selecciona un producto</option>
+    
+    <!-- Opción 1: Productos existentes -->
+<option *ngFor="let prod of productos" [value]="prod.id">
+  {{ prod.name }} (ID: {{ prod.id }}, Stock: {{ prod.quantity || 0 }})
+</option>
+    
+    <!-- Opción 2: Otro producto (no en lista) -->
+    <option value="0">-- Otro producto (no listado) --</option>
+    
+  </select>
+</div>
+
+<!-- Input para nombre personalizado (solo si selecciona "Otro") -->
+<div class="col-md-6" *ngIf="productoSeleccionadoId === 0">
+  <label for="producto_nombre_personalizado" class="form-label">Nombre del producto *</label>
+  <input type="text" class="form-control" id="producto_nombre_personalizado" 
+         [(ngModel)]="productoNombrePersonalizado" name="producto_nombre_personalizado" 
+         placeholder="Escribe el nombre del producto" required>
+</div>
+
+      <!-- Cantidad -->
+      <div class="col-md-6">
+        <label for="cantidad" class="form-label">Cantidad *</label>
+        <input type="number" class="form-control" id="cantidad" 
+               [(ngModel)]="movimiento.cantidad" name="cantidad" 
+               placeholder="Ej. 10" min="1" required>
+      </div>
+
+      <!-- Fecha -->
+      <div class="col-md-6">
+        <label for="fecha" class="form-label">Fecha *</label>
+        <input type="date" class="form-control" id="fecha" 
+               [(ngModel)]="movimiento.fecha" name="fecha" required>
+      </div>
+
+      <!-- Hora -->
+      <div class="col-md-6">
+        <label for="hora" class="form-label">Hora *</label>
+        <input type="time" class="form-control" id="hora" 
+               [(ngModel)]="movimiento.hora" name="hora" required>
+      </div>
+
+      <!-- Responsable -->
+      <div class="col-md-6">
+        <label for="responsable" class="form-label">Responsable *</label>
+        <input type="text" class="form-control" id="responsable" 
+               [(ngModel)]="movimiento.responsable" name="responsable" 
+               placeholder="Nombre completo" required>
+      </div>
+
+      <!-- Nota -->
+      <div class="col-md-12">
+        <label for="nota" class="form-label">Nota opcional</label>
+        <textarea class="form-control" id="nota" rows="3" 
+                  [(ngModel)]="movimiento.nota" name="nota" 
+                  placeholder="Ej. Observaciones, detalles, número de factura..."></textarea>
+      </div>
+
+      <!-- Botones del formulario -->
+      <div class="col-12 text-end mt-3">
+        <button type="submit" class="btn btn-success px-4 me-2">
+          {{ idEditando !== null ? '💾 Actualizar' : '✅ Registrar' }} movimiento
+        </button>
+        
+        <button *ngIf="idEditando !== null" type="button" 
+                class="btn btn-secondary" (click)="cancelarEdicion()">
+          Cancelar edición
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Lista de movimientos registrados -->
+  <div class="mt-5">
+    <h3 class="text-white mb-3">📊 Historial de movimientos</h3>
+    
+    <!-- Loading -->
+    <div *ngIf="cargando" class="text-center">
+      <div class="spinner-border text-primary"></div>
+      <p class="text-white mt-2">Cargando movimientos...</p>
+    </div>
+
+    <!-- Tabla de movimientos -->
+    <div *ngIf="!cargando" class="table-responsive">
+      <table class="table table-dark table-striped align-middle">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tipo</th>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Responsable</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let mov of movimientos">
+            <td>{{ mov.id }}</td>
+            <td>
+              <span [class]="getTipoClass(mov.tipo_movimiento)">
+                {{ getTipoTexto(mov.tipo_movimiento) }}
+              </span>
+            </td>
+            <td>{{ mov.producto_nombre }}</td>
+            <td [class]="getCantidadClass(mov.cantidad)">{{ mov.cantidad }}</td>
+            <td>{{ mov.fecha }}</td>
+            <td>{{ mov.hora }}</td>
+            <td>{{ mov.responsable }}</td>
+            <td>
+              <button class="btn btn-sm btn-warning me-2" 
+                      (click)="editarMovimiento(mov)"
+                      title="Editar movimiento">
+                ✏️ Editar
+              </button>
+              <button class="btn btn-sm btn-danger" 
+                      (click)="eliminarMovimiento(mov.id)"
+                      title="Eliminar movimiento">
+                🗑️ Eliminar
+              </button>
+            </td>
+          </tr>
+          <tr *ngIf="movimientos.length === 0">
+            <td colspan="8" class="text-center py-4">
+              <div class="alert alert-info">
+                No hay movimientos registrados. ¡Agrega el primero!
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
