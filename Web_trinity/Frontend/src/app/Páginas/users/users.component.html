@@ -1,106 +1,131 @@
-<div class="container my-5">
-    <h2 class="text-center mb-4">👤 Gestión de usuarios</h2>
+<form class="row g-3" (ngSubmit)="crearUsuario()" #userForm="ngForm">
   
-    <!-- Formulario para agregar usuario o rol -->
-    <div class="card bg-dark text-white mb-4">
-      <div class="card-body">
-        <h5 class="card-title">➕ Agregar usuario / asignar rol</h5>
-        <form class="row g-3">
-          <div class="col-md-4">
-            <input type="text" class="form-control" placeholder="Nombre completo" required>
-          </div>
-          <div class="col-md-3">
-            <input type="text" class="form-control" placeholder="Nombre de usuario" required>
-          </div>
-          <div class="col-md-3">
-            <input type="password" class="form-control" placeholder="Clave de acceso" required>
-          </div>
-          <div class="col-md-2">
-            <select class="form-select" required>
-              <option selected disabled>Rol</option>
-              <option value="admin">Admin</option>
-              <option value="editor">Vendedor</option>
-              <option value="visualizador">Usuario</option>
-            </select>
-          </div>
-          <div class="col-12 text-end">
-            <button type="submit" class="btn btn-info text-white fw-bold">Agregar / Asignar</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  
-    <!-- Lista de usuarios -->
-    <div class="table-responsive">
-      <table class="table table-dark table-bordered text-center align-middle">
-        <thead class="table-secondary text-dark">
-          <tr>
-            <th>#</th>
-            <th>Nombre</th>
-            <th>Usuario</th>
-            <th>Clave de acceso</th>
-            <th>Rol</th>
-            <th>Fecha creación</th>
-            <th>Hora</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Usuario ejemplo -->
-          <tr>
-            <td>1</td>
-            <td>Laura Gómez</td>
-            <td>lgomez</td>
-            <td>••••••</td>
-            <td>Admin</td>
-            <td>2025-04-20</td>
-            <td>10:15 AM</td>
-            <td>
-              <button class="btn btn-sm btn-primary">Consultar</button>
-              <button class="btn btn-sm btn-warning">Editar</button>
-              <button class="btn btn-sm btn-danger">Eliminar</button>
-            </td>
-          </tr>
-          <!-- Repite usuarios ficticios -->
-          <tr>
-            <td>2</td>
-            <td>Carlos Ruiz</td>
-            <td>cruiz</td>
-            <td>••••••</td>
-            <td>Editor</td>
-            <td>2025-04-18</td>
-            <td>09:30 AM</td>
-            <td>
-              <button class="btn btn-sm btn-primary">Consultar</button>
-              <button class="btn btn-sm btn-warning">Editar</button>
-              <button class="btn btn-sm btn-danger">Eliminar</button>
-            </td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Jessica Torres</td>
-            <td>jtorres</td>
-            <td>••••••</td>
-            <td>Encargado</td>
-            <td>2025-04-17</td>
-            <td>11:10 AM</td>
-            <td>
-              <button class="btn btn-sm btn-primary">Consultar</button>
-              <button class="btn btn-sm btn-warning">Editar</button>
-              <button class="btn btn-sm btn-danger">Eliminar</button>
-            </td>
-          </tr>
-          <!-- Usuarios restantes (solo cambia nombre, usuario, rol y fecha/hora) -->
-          <tr><td>4</td><td>María Díaz</td><td>mdiaz</td><td>••••••</td><td>Vendedor</td><td>2025-04-16</td><td>12:00 PM</td><td><button class="btn btn-sm btn-primary">Consultar</button> <button class="btn btn-sm btn-warning">Editar</button> <button class="btn btn-sm btn-danger">Eliminar</button></td></tr>
-          <tr><td>5</td><td>José Martínez</td><td>jmartinez</td><td>••••••</td><td>Vendedor</td><td>2025-04-16</td><td>03:25 PM</td><td><button class="btn btn-sm btn-primary">Consultar</button> <button class="btn btn-sm btn-warning">Editar</button> <button class="btn btn-sm btn-danger">Eliminar</button></td></tr>
-          <tr><td>6</td><td>Lucía Herrera</td><td>lherrera</td><td>••••••</td><td>Vendedor</td><td>2025-04-15</td><td>08:45 AM</td><td><button class="btn btn-sm btn-primary">Consultar</button> <button class="btn btn-sm btn-warning">Editar</button> <button class="btn btn-sm btn-danger">Eliminar</button></td></tr>
-          <tr><td>7</td><td>Santiago Vera</td><td>svera</td><td>••••••</td><td>Vendedor</td><td>2025-04-15</td><td>02:10 PM</td><td><button class="btn btn-sm btn-primary">Consultar</button> <button class="btn btn-sm btn-warning">Editar</button> <button class="btn btn-sm btn-danger">Eliminar</button></td></tr>
-          <tr><td>8</td><td>Valeria Ríos</td><td>vrios</td><td>••••••</td><td>Admin</td><td>2025-04-14</td><td>04:20 PM</td><td><button class="btn btn-sm btn-primary">Consultar</button> <button class="btn btn-sm btn-warning">Editar</button> <button class="btn btn-sm btn-danger">Eliminar</button></td></tr>
-          <tr><td>9</td><td>Juan Camilo</td><td>jcamilo</td><td>••••••</td><td>Admin</td><td>2025-04-14</td><td>05:55 PM</td><td><button class="btn btn-sm btn-primary">Consultar</button> <button class="btn btn-sm btn-warning">Editar</button> <button class="btn btn-sm btn-danger">Eliminar</button></td></tr>
-          <tr><td>10</td><td>Andrea López</td><td>alopez</td><td>••••••</td><td>Vendedor</td><td>2025-04-13</td><td>07:00 PM</td><td><button class="btn btn-sm btn-primary">Consultar</button> <button class="btn btn-sm btn-warning">Editar</button> <button class="btn btn-sm btn-danger">Eliminar</button></td></tr>
-        </tbody>
-      </table>
-    </div>
+  <!-- Mensaje de error -->
+  <div *ngIf="errorMensaje" class="col-12 alert alert-danger">
+    {{ errorMensaje }}
+  </div>
+
+  <!-- FORMULARIO -->
+  <div class="col-md-4">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Nombre completo"
+      name="nombre"
+      [(ngModel)]="usuario.nombre"
+      required>
+  </div>
+
+  <div class="col-md-3">
+    <input
+      type="email"
+      class="form-control"
+      placeholder="Correo electrónico"
+      name="email"
+      [(ngModel)]="usuario.email"
+      required
+      email>
+  </div>
+
+  <div class="col-md-3">
+    <input
+      type="password"
+      class="form-control"
+      placeholder="Clave de acceso"
+      name="password"
+      [(ngModel)]="usuario.password"
+      [required]="idEditando === null"
+      [disabled]="idEditando !== null">
+    <small *ngIf="idEditando !== null" class="text-warning">
+      La contraseña no se puede editar
+    </small>
+  </div>
+
+  <div class="col-md-2">
+    <select
+      class="form-select"
+      name="rol"
+      [(ngModel)]="usuario.rol"
+      required>
+      <option value="" disabled selected>Rol</option>
+      <option value="admin">Admin</option>
+      <option value="editor">Vendedor</option>
+      <option value="visualizador">Usuario</option>
+    </select>
+  </div>
+
+  <div class="col-12 text-end">
+    <button 
+      type="submit" 
+      class="btn btn-info text-white fw-bold me-2"
+      [disabled]="cargando || userForm.invalid">
+      {{ idEditando !== null ? 'Actualizar' : 'Agregar' }}
+      <span *ngIf="cargando" class="spinner-border spinner-border-sm ms-2"></span>
+    </button>
+    
+    <button 
+      *ngIf="idEditando !== null"
+      type="button" 
+      class="btn btn-secondary"
+      (click)="cancelarEdicion()">
+      Cancelar
+    </button>
+  </div>
+
+</form>
+
+<!-- LISTADO DE USUARIOS -->
+<div class="table-responsive mt-4 col-12">
+  <div *ngIf="cargando" class="text-center">
+    <div class="spinner-border text-info"></div>
+    <p>Cargando usuarios...</p>
   </div>
   
-  
+  <table *ngIf="!cargando" class="table table-dark table-striped align-middle text-center">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Rol</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let u of usuarios; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ u.nombre }}</td>
+        <td>{{ u.email }}</td>
+        <td>
+          <span [ngClass]="{
+            'badge bg-danger': u.rol === 'admin',
+            'badge bg-warning': u.rol === 'editor',
+            'badge bg-info': u.rol === 'visualizador'
+          }">
+            {{ u.rol }}
+          </span>
+        </td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-sm btn-warning me-1"
+            (click)="editarUsuario(u)">
+            <i class="bi bi-pencil"></i> Editar
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-sm btn-danger"
+            (click)="eliminarUsuario(u.id)">
+            <i class="bi bi-trash"></i> Eliminar
+          </button>
+        </td>
+      </tr>
+
+      <tr *ngIf="usuarios.length === 0">
+        <td colspan="5" class="text-center">No hay usuarios registrados</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
